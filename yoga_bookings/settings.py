@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-tanikairwin-soulliving-ef9rptmem60.ws-eu115.gitpod.io','.herokuapp.com']
-CSRF_TRUSTED_ORIGINS = ['https://*codeinstitute-ide.net','https://*herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://codeinstitute-ide.net','https://herokuapp.com']
 
 # Application definition
 
@@ -43,15 +43,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'yg_bookingsdjango'
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
+    'yg_bookings',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
