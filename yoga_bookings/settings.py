@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'yg_bookings'
+    'yg_bookingsdjango'
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
