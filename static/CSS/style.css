@@ -1,4 +1,5 @@
-#navbar {
-    background-color: #67996e;
-  
+.navbar {
+    background-color: #fff;
+    padding: 0rem;
+    position: relative;
 }

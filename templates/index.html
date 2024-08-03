@@ -19,40 +19,38 @@
 </head>
 <body>
         <!--Nav-->
-        <nav class="navbar">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="templates/index.html">
-                <img src="static/assets/images/soullivinglogo.jpg" alt="Soul Living Logo" width="165" height="165">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="templates/index.html">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Yoga</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Meditation</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="static/assets/images/blankprofile.jpeg">
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                      </li>
-                    </ul>
+        <nav class="navbar navbar-expand" style="padding: 0;">
+            <div class="container-fluid row ">
+                <a class="navbar-brand" href="templates/index.html">
+                  <img src="static/assets/images/soullivinglogo.jpg" alt="Soul Living Logo" width="165" height="165">
+                </a> 
+                <ul class="container row justify-content-centre"> 
+                    <li class="col-4">
+                      <a class="nav-link" href="templates/index.html">Home</a>
+                    </li>
+                    <li class="nav-item col-4">
+                      <a class="nav-link" href="#">Yoga</a>
+                    </li>
+                    <li class="nav-item col-4">
+                      <a class="nav-link" href="#">Meditation</a>
+                    </li>
+                </ul>
+                <!-- Dropdown -->
+                <div class="navbar-nav dropdown flex-column">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    <img src="static/assets/images/blankprofile.jpeg" style="width: 60px;">
+                  </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Login</a>
+                        <a class="dropdown-item" href="#">Signup</a>
+                        <a class="dropdown-item" href="#">Contact Us</a>
+                    </div>
                 </div>
-              </a>
             </div>
           </nav>        
 
 
-    <!-- Nav bar including logo -->
+
 
     <!-- Background image with title and book now button -->
 
