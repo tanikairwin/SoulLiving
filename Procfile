@@ -1,2 +1,2 @@
-web: gunicorn yoga_bookings.wsgi
+web: gunicorn soul_living.wsgi
 worker: python manage.py qcluster
