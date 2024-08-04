@@ -19,12 +19,12 @@
 </head>
 <body>
         <!--Nav-->
-        <nav class=" container- fluid navbar navbar-expand">
-            <div class="container col-10 flex-row align-content-center">
-                <a class="navbar-brand col-3" style="border: 0px; height:100px; margin: 0px;" href="templates/index.html">
-                  <img src="static/assets/images/soullivinglogo.png" style="margin: 8px 0px 8px 0px;" class="rounded-circle" alt="Soul Living Logo" width="80px" height="80px">
-                </a> 
-                <ul class="col-9 row justify-content-center" style="list-style-type: none; padding: 0; margin: 0;"> 
+        <nav class=" container-fluid navbar navbar-expand" style="margin: 0;">
+            <a class="navbar-brand col-1" style="border: 0px; height:100px; margin: 0px;" href="templates/index.html">
+                <img src="static/assets/images/soullivinglogo.png" style="margin: 8px 0px 8px 0px;" class="rounded-circle" alt="Soul Living Logo" width="80px" height="80px">
+            </a>
+            <div class="container col-9 flex-row align-content-center" style="margin: 0px;">
+                <ul class="col-12 row justify-content-left" style="list-style-type: none; padding: 0; margin: 0;"> 
                     <li class="col-4 nav-item">
                       <a class="nav-link text-center" href="templates/index.html" style="font-size: 1.5rem; color: #67996e;">Home</a>
                     </li>
@@ -37,21 +37,21 @@
                 </ul>
             </div>
                 <!-- Dropdown -->
-            <div class="dropdown container justify-content-right col-2">
-                <button class="dropdown-toggler align-content-right" data-toggle="dropdown" type="button" data-target="#collaspible" style="width: 80px; height: 80px;">
+            <div class="dropdown col-2">
+                <button class="dropdown-toggler" data-toggle="dropdown" type="button" data-target="#collaspible" style="width: 80px; height: 80px;">
                     <span>
                         <img src="static/assets/images/blankprofile.jpeg" class="rounded-circle" style="width: 60px; height:60px;">
                     </span>
                 </button>
-                <div class="container dropdown-menu navbar-collapse">
-                        <ul class="col divider" style="list-style-type: none;">
-                            <li class="dropdown-item" style="padding: 0;">
-                                <a class="nav-link" style="padding: 0; text-align: left; font-size: 1.2rem;" href="#">Login</a>
+                <div class="dropdown-menu navbar-collapse">
+                        <ul class="dropdown-links" style="list-style-type: none;">
+                            <li class="dropdown-item">
+                                <a class="nav-link" style="padding:0px; text-align: left; font-size: 1.2rem;" href="#">Login</a>
                             </li>
-                            <li class="dropdown-item" style="padding: 0;">
-                                <a class="nav-link" style="padding: 0; text-align: left; font-size: 1.2rem;" href="templates/signup.html">Signup</a>
+                            <li class="dropdown-item">
+                                <a class="nav-link" style="padding:0px; text-align: left; font-size: 1.2rem;" href="templates/signup.html">Signup</a>
                             </li>
-                            <li class="dropdown-item" style="padding: 0;">
+                            <li class="dropdown-item">
                                 <a class="nav-link" style="padding: 0; text-align: left; font-size: 1.2rem;" href="#">Contact Us</a>
                             </li>
                         </ul>
