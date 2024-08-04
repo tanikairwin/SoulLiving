@@ -1,8 +1,39 @@
-.navbar {
-    background-color: #fff;
-    position: relative;
+body {
+    background-color: #f1fcf1;
 }
 
-.nav-item ::marker{
-    marker: unset; 
+.navbar {
+    background-color: #f1fcf1;
 }
+
+.jumbrotron {
+    background-color: #f1fcf1;
+}
+
+
+.callout-container {
+    color: #33a553;
+    height: 100vh;
+    background: url(../assets/images/yogagroup-stretchpose.jpg) no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.opaque-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(8, 8, 8, 0.473);
+}
+
+
