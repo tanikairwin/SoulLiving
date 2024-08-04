@@ -10,19 +10,78 @@
     <!-- CSS file -->
     <link rel="stylesheet" href="static/CSS/style.css">
     <!-- Favicon -->
-    <link rel="icon" type="zip" sizes="48x48" href="static/assets/images/favicon_io.zip">
+    <link rel="icon" type="image/png" sizes="48x48" href="static/assets/Faviconlinks/favicon.ico">
     <!-- Meta tags, kewywords, author for SEO -->
     <meta name="description" content="Providing women a booking system for yoga and meditation sessions at flexible times every week.">
     <meta name="keywords" content="Yoga, Women only, Meditation">
     <meta name="author" content="Tanika Irwin">
-    <title>Soul Living Lounge</title>
+    <title>Soul Living</title>
 </head>
 <body>
-    <h1>Soul Living Lounge</h1>
+        <!--Nav-->
+        <nav class=" container-fluid navbar navbar-expand" style="margin: 0;">
+            <a class="navbar-brand col-1" style="border: 0px; height:100px; margin: 0px;" href="templates/index.html">
+                <img src="static/assets/images/soullivinglogo.png" style="margin: 8px 0px 8px 0px;" class="rounded-circle" alt="Soul Living Logo" width="80px" height="80px">
+            </a>
+            <div class="container col-9 flex-row align-content-center" style="margin: 0px;">
+                <ul class="col-12 row justify-content-left" style="list-style-type: none; padding: 0; margin: 0;"> 
+                    <li class="col-4 nav-item">
+                      <a class="nav-link text-center" href="templates/index.html" style="font-size: 1.5rem; color: #67996e;">Home</a>
+                    </li>
+                    <li class="nav-item col-4">
+                      <a class="nav-link text-center" href="#" style="font-size: 1.5rem; color: #67996e;">Yoga</a>
+                    </li>
+                    <li class="nav-item col-4">
+                      <a class="nav-link text-center" href="#" style="font-size: 1.5rem; color: #67996e;">Meditation</a>
+                    </li>
+                </ul>
+            </div>
+                <!-- Dropdown -->
+            <div class="dropdown col-2">
+                <button class="dropdown-toggler" data-toggle="dropdown" type="button" data-target="#collaspible" style="width: 80px; height: 80px;">
+                    <span>
+                        <img src="static/assets/images/blankprofile.jpeg" class="rounded-circle" style="width: 60px; height:60px;">
+                    </span>
+                </button>
+                <div class="dropdown-menu navbar-collapse">
+                        <ul class="dropdown-links" style="list-style-type: none;">
+                            <li class="dropdown-item">
+                                <a class="nav-link" style="padding:0px; text-align: left; font-size: 1.2rem;" href="#">Login</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="nav-link" style="padding:0px; text-align: left; font-size: 1.2rem;" href="templates/signup.html">Signup</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="nav-link" style="padding: 0; text-align: left; font-size: 1.2rem;" href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>       
 
-    <!-- Nav bar including logo -->
+
+
 
     <!-- Background image with title and book now button -->
+    <div class="jumbotron-fluid callout-container" style="height: 400px">
+        <div class="opaque-overlay"></div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Callout style introduction to page with title and brief text -->
+                <section class="callout jumbotron text-center" style="background-color: #f1fcf1; margin-bottom: 0px;">
+                    <h2 class="jumbotron-header">Welcome to Soul Living</h2>
+                    <p class="lead"></p>
+                    <!-- book online now button section -->
+                    <div class="form-group">
+                        <label for="book-now-button"></label>
+                        <!-- button is added with boostrap -->
+                        <button type="button" class="btn btn-success" id="book-now-button">Book Online Now</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
 
     <!--About and info Section  -->
 
