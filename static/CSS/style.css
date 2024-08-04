@@ -1,5 +1,8 @@
 .navbar {
     background-color: #fff;
-    padding: 0rem;
     position: relative;
+}
+
+.nav-item ::marker{
+    marker: unset; 
 }

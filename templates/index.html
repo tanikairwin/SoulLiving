@@ -19,35 +19,46 @@
 </head>
 <body>
         <!--Nav-->
-        <nav class="navbar navbar-expand" style="padding: 0;">
-            <div class="container-fluid row ">
-                <a class="navbar-brand" href="templates/index.html">
-                  <img src="static/assets/images/soullivinglogo.jpg" alt="Soul Living Logo" width="165" height="165">
+        <nav class=" container- fluid navbar navbar-expand">
+            <div class="container col-9 flex-row align-content-center">
+                <a class="navbar-brand col-3" style="border: 0px; height:150px;" href="templates/index.html">
+                  <img src="static/assets/images/soullivinglogo.png" style="margin: 16px;" class="rounded-circle" alt="Soul Living Logo" width="150" height="150">
                 </a> 
-                <ul class="container row justify-content-centre"> 
+                <ul class="col-9 row" style="list-style-type: none;"> 
                     <li class="col-4">
-                      <a class="nav-link" href="templates/index.html">Home</a>
+                      <a class="nav-link" href="templates/index.html" style="font-size: 1.5rem; color: #67996e;">Home</a>
                     </li>
                     <li class="nav-item col-4">
-                      <a class="nav-link" href="#">Yoga</a>
+                      <a class="nav-link" href="#" style="font-size: 1.5rem; color: #67996e;">Yoga</a>
                     </li>
                     <li class="nav-item col-4">
-                      <a class="nav-link" href="#">Meditation</a>
+                      <a class="nav-link" href="#" style="font-size: 1.5rem; color: #67996e;">Meditation</a>
                     </li>
                 </ul>
+            </div>
                 <!-- Dropdown -->
-                <div class="navbar-nav dropdown flex-column">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    <img src="static/assets/images/blankprofile.jpeg" style="width: 60px;">
-                  </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Login</a>
-                        <a class="dropdown-item" href="#">Signup</a>
-                        <a class="dropdown-item" href="#">Contact Us</a>
+            <div class="navbar-nav dropdown-nav container col-3">
+                <button class="navbar-toggler" data-toggle="collapse" type="button" data-target="#collaspibleNavbar" style="width: 120px; height: 100px;">
+                    <span>
+                        <img src="static/assets/images/blankprofile.jpeg" class="rounded-circle" style="width: 100px; height:80px;">
+                    </span>
+                </button>
+                <div class="container collapse navbar-collapse">
+                        <ul class="col" style="list-style-type: none;">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="templates/signup.html">Signup</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-          </nav>        
+        </nav>        
 
 
 
