@@ -47,3 +47,10 @@ body {
 
 
 /* About section with cards */
+.card {
+    background-color: #f1fcf1;
+    display: flex;
+}
+#cardInsideYoga, #cardInsideMed {
+    margin: 10px;
+}

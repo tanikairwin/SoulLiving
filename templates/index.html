@@ -81,7 +81,7 @@
     </div>
 
     <!--About and info Section  -->
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: fit-content;">
         <div class="container col-3">
             <img class="rounded-circle" src="static/assets/images/soullivinglogo.png" alt="Soul Living Logo" style="width: 200px; padding: 15px; background-color: #f1fcf1;">
         </div>
@@ -89,21 +89,21 @@
             <h3 style="text-align: center;">description of soul living including sessions we offer</h3>
         </div>
         <div class="container col-9">
-            <div class="card-deck justify-content-around" style="width: fit-content; height: 100px;">
-                <div class="card" style="height: 200px;">
-                    <img class="card-img-top mx-auto d-block" src="../static/assets/images/yogaposewomen.jpg" alt="Group yoga pose of downward dog">
-                    <div class="card-body card-img-overlay text-center">
+            <div class="row">
+                <div class="card col-6">
+                    <img class="card-img-top" src="../static/assets/images/yogaposewomen.jpg" alt="Group yoga pose of downward dog">
+                    <div class="card-body card-img-overlay text-center"> 
                         <h2 class="card-title">Yoga</h2>
-                        <div class="card">
+                        <div id="cardInsideYoga" class="card">
                             <p class="card-text">description of yoga sessions over white background</p>
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card col-6">
                     <img class="card-img-top" src="../static/assets/images/manmeditating.jpg" alt=" A man meditating">
                     <div class="card-body card-img-overlay text-center">
                         <h2 class="card-title">Meditation</h2>
-                        <div class="card">
+                        <div id="cardInsideMed" class="card">
                             <p class="card-text">description of meditation sessions over white backgrounds</p>
                         </div>
                     </div>
@@ -111,12 +111,36 @@
             </div>
         </div>
     </div>
-    <!-- Slogan Section -->
-
-    <!-- Reviews Section -->
-
+    
     <!-- Sign up Section -->
+    <div class="container-fluid">
+        <div class="container justify-content-center">
+            <div class="container">
+                <h2>Sign up to Book our Sessions</h2>
+                <p></p>
+            </div>
+            <div>
+                <label for="">Email Address</label>
+                <input type="email">
+            </div>
+            <div>
+            <button>Sign up Now</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
+    <footer class="container-fluid">
+        <div class="container">
+        <div>
+            <img src="" alt="">
+        </div>
+        <div class="row col-12">
+          <h4 class="authors col-md-3">Authors:</h4>
+          <a class="link col-md-3" href="https://github.com/SamuelParkerTech" target="_blank" role="button">Samuel Parker</a>
+          <a class="link col-md-3" href="https://github.com/SubjugatorofCSS" target="_blank" role="button">Aeryx Rose</a>
+          <a class="link col-md-3" href="https://github.com/tanikair" target="_blank" role="button">Tanika Irwin</a>
+        </div>
+      </footer>
 </body>
 </html>
