@@ -11,7 +11,7 @@ body {
 }
 /* Nav bar styles */
 .navbar {
-    background-color: #f1fcf1;
+    background-color: #c5facb;
 }
 
 
@@ -22,11 +22,11 @@ body {
 
 /* Callout section styles */
 .jumbrotron {
-    background-color: #f1fcf1;
+    background-color: #c5facb;
 }
 
 .callout-container {
-    color: #33a553;
+    color: #002d09;
     height: 100vh;
     background: url(../assets/images/yogagroup-stretchpose.jpg) no-repeat center top fixed;
     -webkit-background-size: cover;
@@ -60,7 +60,23 @@ body {
     margin: 10px;
 }
 
+/* Signup section */
+.signUp {
+    background-color: #c5facb;
+}
+
 /* Footer */
 .footer {
-    background-color: #f6edd9;
+    background-color: #caca75;
+    margin: auto;
+}
+
+.footerImage {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.socialNavigation {
+    padding: 5px;
+    text-align: center;
+    color: #002d09;
 }
