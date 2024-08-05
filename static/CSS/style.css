@@ -15,6 +15,11 @@ body {
 }
 
 
+.nav-item .nav-link:hover {
+    text-decoration: underline;
+}
+
+
 /* Callout section styles */
 .jumbrotron {
     background-color: #f1fcf1;
@@ -53,4 +58,9 @@ body {
 }
 #cardInsideYoga, #cardInsideMed {
     margin: 10px;
+}
+
+/* Footer */
+.footer {
+    background-color: #f6edd9;
 }
