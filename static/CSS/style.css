@@ -70,6 +70,12 @@ h2, p {
 label {
     font-size: larger;
 }
+.signup-button, .signup-form {
+    padding: 5px;
+    margin: 5px;
+}
+
+
 
 /* Footer */
 .footer {
