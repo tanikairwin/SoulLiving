@@ -9,12 +9,11 @@
 body {
     background-color: #f1fcf1;
 }
+
 /* Nav bar styles */
 .navbar {
     background-color: #c5facb;
 }
-
-
 .nav-item .nav-link:hover {
     text-decoration: underline;
 }
@@ -24,7 +23,9 @@ body {
 .jumbrotron {
     background-color: #c5facb;
 }
-
+p {
+    font-size: larger;
+}
 .callout-container {
     color: #002d09;
     height: 100vh;
@@ -67,7 +68,6 @@ body {
 h2, p {
     color: #002d09;
     padding: 10px;
-    
 }
 label {
     font-size: larger;
