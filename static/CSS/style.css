@@ -66,6 +66,8 @@ body {
 }
 h2, p {
     color: #002d09;
+    padding: 10px;
+    
 }
 label {
     font-size: larger;
