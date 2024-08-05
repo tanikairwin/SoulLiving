@@ -64,6 +64,12 @@ body {
 .signUp {
     background-color: #c5facb;
 }
+h2, p {
+    color: #002d09;
+}
+label {
+    font-size: larger;
+}
 
 /* Footer */
 .footer {
