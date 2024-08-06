@@ -60,7 +60,12 @@ p {
     margin: 10px;
 }
 .card-title {
-    margin: ;
+    margin: 0;
+}
+h6, h5 {
+    text-align: center;
+    color: #67996e;
+    padding: 5px;
 }
 
 /* Signup section */
