@@ -41,7 +41,6 @@ p {
     font-family: 'Roboto', sans-serif;
 
 }
-
 .opaque-overlay {
     position: absolute;
     top: 0;
@@ -50,7 +49,6 @@ p {
     width: 100%;
     background-color: rgba(8, 8, 8, 0.473);
 }
-
 
 /* About section with cards */
 .card {
@@ -77,20 +75,23 @@ label {
     margin: 5px;
 }
 
-
-
 /* Footer */
 .footer {
     background-color: #caca75;
     margin: auto;
 }
 
-.footerImage {
+.footer-img {
     margin-top: 8px;
     margin-bottom: 8px;
 }
-.socialNavigation {
+.social-nav {
     padding: 5px;
     text-align: center;
     color: #002d09;
+}
+
+.fab {
+    color: #33a553;
+    font-size: larger;
 }
