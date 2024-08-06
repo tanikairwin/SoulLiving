@@ -54,9 +54,13 @@ p {
 .card {
     background-color: #f1fcf1;
     display: flex;
+    padding: 0px;
 }
 #cardInsideYoga, #cardInsideMed {
     margin: 10px;
+}
+.card-title {
+    margin: ;
 }
 
 /* Signup section */
