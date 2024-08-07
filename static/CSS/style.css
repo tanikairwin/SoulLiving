@@ -18,7 +18,19 @@ body {
     color: #002d09;
     padding: 10px;
 }
-
+.navbar-links {
+    font-size: 2rem;
+    color: #67996e;
+    margin: 15px;
+}
+.nav-title {
+    pointer-events: none;
+    text-decoration: none;
+}
+.navbar-links :hover {
+    text-decoration: underline #002d09;
+    color: #33a553;
+}
 
 /* Callout section styles */
 .jumbrotron {
