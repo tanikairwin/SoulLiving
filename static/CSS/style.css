@@ -97,6 +97,13 @@ h6, h5 {
     color: #67996e;
     padding: 5px;
 }
+.about-logo {
+    background-color: #f1fcf1;
+    margin: 0 0 0 15px;
+    padding: 15px;
+    height: 200px;
+    width: 200px;
+}
 
 /* Signup section */
 .signUp {
@@ -123,6 +130,8 @@ label {
 .footer-img {
     margin-top: 8px;
     margin-bottom: 8px;
+    height: 100px;
+    width: 100px;
 }
 .social-nav {
     padding: 5px;
@@ -143,6 +152,33 @@ label {
         position: relative;
         bottom: 0px;
     }
+    
+    .callout {
+        width: 300px;
+    }
+    .callout p {
+        font-size: 1rem;
+    }
+    .jumbotron-header {
+        font-size: 1.5rem;
+    }
+    .form-group {
+        margin: 0.25rem;
+    }
+
+
+    .about-logo {
+        height: 150px;
+        width: 150px;
+        position: relative;
+        left: -35px;
+        align-items: center;
+    }
+
+    .footer-img {
+        height: 70px;
+        width: 70px;
+    }
 }
 
 @media  screen and (min-width: 520px) {
@@ -152,9 +188,13 @@ label {
     .profile-img {
         display: none;
     }
+    .about-logo {
+        position: relative;
+        right: -40px;
+    }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 320px) {
     .profile-button {
         width: 40px;
         height: 40px;
@@ -167,5 +207,8 @@ label {
         left: -13px;
         top: -7px;
         position: relative;
+    }
+    .callout {
+        width: 250px;
     }
 }
