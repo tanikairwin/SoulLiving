@@ -19,25 +19,45 @@
 </head>
 <body>
         <!--Nav bar-->
-        <nav class=" container-fluid navbar navbar-expand" style="margin: 0;">
-            <a class="navbar-brand col-1" style="border: 0px; height:100px; margin: 0px;" href="templates/index.html">
-                <img src="static/assets/images/soullivinglogo.png" style="margin: 8px 0px 8px 0px;" class="rounded-circle" alt="Soul Living Logo" width="80px" height="80px">
-            </a>
-            <div class="container col-9 flex-row align-content-center" style="margin: 0px;">
-                <ul class="col-12 row justify-content-left" style="list-style-type: none; padding: 0; margin: 0;"> 
-                    <li class="col-4 nav-item">
-                      <a class="nav-link text-center" href="templates/index.html" style="font-size: 1.5rem; color: #002d09;">Home</a>
+        <nav class=" container-fluid navbar navbar-expand-lg" style="margin: 0;">
+            <div class="navbar-brand">
+                <a href="templates/index.html">
+                    <img src="static/assets/images/soullivinglogo.png" style="margin: 8px 0px 8px 0px;" class="rounded-circle" alt="Soul Living Logo" width="80px" height="80px">
+                </a>
+                <a href="templates/index.html">Soul Living</a>
+            
+
+             <!-- Toggle navigation for smaller devices -->
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Toggle burger icon -->
+            <span class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <!-- Site pages linked in nav bar -->
+                <ul class="navbar-nav w-100 d-flex justify-content-between">
+                    <!-- Home page -->
+                    <li class="active nav-item mr-2">
+                        <a class="nav-link" href="index.html">Log In</a>
                     </li>
-                    <li class="nav-item col-4">
-                      <a class="nav-link text-center" href="#" style="font-size: 1.5rem; color: #002d09;">Yoga</a>
-                    </li>
-                    <li class="nav-item col-4">
-                      <a class="nav-link text-center" href="#" style="font-size: 1.5rem; color: #002d09;">Meditation</a>
+                    <!-- Programmes page -->
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" href="programmes.html">Sign Up</a>
                     </li>
                 </ul>
             </div>
+            <!-- <div class="container col-9-lg flex-row align-content-center" style="margin: 0px;">
+                <ul class="col-12 row justify-content-left" style="list-style-type: none; padding: 0; margin: 0;"> 
+                    <li class="nav-item col-4">
+                      <a class="nav-link text-center" href="#" style="font-size: 1.5rem; color: #002d09;">Log In</a>
+                    </li>
+                    <li class="nav-item col-4">
+                      <a class="nav-link text-center" href="#" style="font-size: 1.5rem; color: #002d09;">Signup</a>
+                    </li>
+                </ul>
+            </div> -->
                 <!-- Dropdown -->
-            <div class="dropdown col-2">
+            <!-- <div class="dropdown col-2-lg d-none d-block-md">
                 <button class="dropdown-toggler" data-toggle="dropdown" type="button" data-target="#collaspible" style="width: 80px; height: 80px;">
                     <span>
                         <img src="static/assets/images/blankprofile.jpeg" class="rounded-circle" style="width: 60px; height:60px;">
@@ -56,8 +76,8 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
         </nav>       
 
     <!-- Background image with title and book now button -->
