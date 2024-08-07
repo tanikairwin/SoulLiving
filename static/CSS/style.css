@@ -13,6 +13,7 @@ body {
 /* Nav bar styles */
 .navbar {
     background-color: #c5facb;
+    padding: 0 15px 0 15px;
 }
 .nav-title {
     color: #002d09;
@@ -30,6 +31,11 @@ body {
 .navbar-links :hover {
     text-decoration: underline #002d09;
     color: #33a553;
+}
+.profile-img {
+    height: 80px;
+    width: 80px;
+   
 }
 
 /* Callout section styles */
@@ -123,5 +129,31 @@ label {
     .nav-title {
         font-size: 1.5rem;
         padding: 10px;
+    }
+}
+
+@media  screen and (min-width: 520px) {
+    .profile-button {
+        display: none
+    }
+    .profile-img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .profile-button {
+        width: 40px;
+        height: 40px;
+        z-index: 1;
+    }
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        z-index: 2;
+        left: -13px;
+        top: -7px;
+        position: relative;
+        
     }
 }
