@@ -22,10 +22,10 @@
         <!--Nav bar-->
         <nav class="container-fluid navbar navbar-expand-sm" style="margin: 0;">
             <div class="navbar-brand">
-                <a href="home/bookings/home/">
+                <a href="{% url 'home' %}">
                     <img src="/static/assets/images/soullivinglogo.png" style="margin: 8px 0px 8px 0px;" class="rounded-circle" alt="Soul Living Logo" width="80px" height="80px">
                 </a>
-                <a class="nav-title h1" href="home/"><strong>Soul Living</strong></a>
+                <a class="nav-title h1" href="{% url 'home' %}"><strong>Soul Living</strong></a>
             </div>
             
              <!-- Toggle navigation for smaller devices -->
@@ -38,10 +38,10 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-links navbar-nav w-100 mx-auto d-flex row justify-content-center">
                     <li class="active nav-item mx-auto">
-                        <a class="nav-link" href="bookings/" style="color: #67996e;">Bookings</a>
+                        <a class="nav-link" href="{% url 'bookings' %}" style="color: #67996e;">Bookings</a>
                     </li>
                     <li class="nav-item mx-auto   ">
-                        <a class="nav-link" href="login/" style="color: #67996e;">Log In</a>
+                        <a class="nav-link" href="{% url 'login' %}" style="color: #67996e;">Log In</a>
                     </li>
                 </ul>
             </div>
@@ -62,7 +62,7 @@
    <!-- Footer -->
     <footer class="container-fluid footer">
         <div class="rows row col-12-md">
-            <a class="col-3" href="home/">
+            <a class="col-3" href="{% url 'home' %}">
                <img class=" footer-img rounded-circle" src="/static/assets/images/soullivinglogo.png" alt="Soul Living Logo">                
             </a>
             <div class="col-4-md align-content-center">
