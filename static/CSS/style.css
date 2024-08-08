@@ -127,10 +127,8 @@ label {
     background-color: #caca75;
     margin: auto;
 }
-
 .footer-img {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    padding: 10px;
     height: 100px;
     width: 100px;
 }
@@ -139,13 +137,17 @@ label {
     text-align: center;
     color: #002d09;
 }
-
+.find-us {
+    align-content: center;
+}
 .fab {
     color: #33a553;
     font-size: larger;
 }
 
 /* Media Queries */
+
+/* Devices 520px and under (Mobile) */
 @media screen and (max-width: 520px) {
     /* Navbar */
     .nav-title {
@@ -208,28 +210,48 @@ label {
         height: 70px;
         width: 70px;
     }
+    .social-nav {
+        font-size: 1rem;
+        position: relative;
+    }
+    .social-links {
+        font-size: small;
+        display: flex;
+    }
+    .rows {
+        display: flex;
+    }
 }
 
+/* Devices equal to an over 520px (Large Mobiles,Tablets,Desktop) */
 @media  screen and (min-width: 520px) {
+    /* Navbar */
     .profile-button {
         display: none
     }
     .profile-img {
         display: none;
     }
+    /* About section */
     .about-logo {
         position: relative;
     }
 }
 
+/* Devices equal  to and over 720px (Tablets, Desktop) */
 @media  screen and (min-width: 720px) {
+    /* About section */
     .about-logo {
         position: relative;
         right: -40px;
     }
+    /* Footer */
+    
 }
 
+/* Devices no larger than 320px (Small Mobiles) */
 @media screen and (max-width: 320px) {
+    /* Navbar */
     .profile-button {
         width: 40px;
         height: 40px;
@@ -243,9 +265,11 @@ label {
         top: -7px;
         position: relative;
     }
+    /* Callout section */
     .callout {
         width: 250px;
     }
+    /* About section */
     .about-logo {
         position: relative;
         right: -50px;
