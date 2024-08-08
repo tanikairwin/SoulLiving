@@ -183,12 +183,31 @@ label {
     .row {
         display: block;
     }
+    /* Signup section */
+    .signup-title {
+        font-size: 1.2rem;
+        margin: 0px;
+    }
+    .signup-text {
+        font-size: 1rem;
+        margin: 0px;
+    }
+    .signup-form {
+        height: 25px;
+        width: 148px;
+    } 
+    .label {
+        font-size: 1rem;
+    }
+    .signup-button {
+        position: relative;
+        font-size: small;
+    }
     /* Footer */
     .footer-img {
         height: 70px;
         width: 70px;
     }
-
 }
 
 @media  screen and (min-width: 520px) {
