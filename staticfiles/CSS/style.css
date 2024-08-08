@@ -1,0 +1,277 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+  }
+  
+body {
+    background-color: #f1fcf1;
+}
+
+/* Nav bar styles */
+
+.navbar {
+    background-color: #c5facb;
+    padding: 0 15px 0 15px;
+}
+.nav-title {
+    color: #002d09;
+    padding: 10px;
+    position: relative;
+    bottom: -10px;
+}
+.navbar-links {
+    font-size: 2rem;
+    color: #67996e;
+    margin: 15px;
+}
+.nav-title {
+    pointer-events: none;
+    text-decoration: none;
+}
+.navbar-links :hover {
+    text-decoration: underline #002d09;
+    color: #33a553;
+}
+.profile-img {
+    height: 70px;
+    width: 70px;
+    position: relative;
+    z-index: 2;
+    top: -7px;
+    left: -13px;
+}
+.profile-button {
+    z-index: 1;
+    height: 70px;
+    width: 70px;
+}
+
+/* Callout section styles */
+.jumbrotron {
+    background-color: #c5facb;
+}
+p {
+    font-size: larger;
+}
+.callout-container {
+    color: #002d09;
+    height: 100vh;
+    background: url(../assets/images/yogagroup-stretchpose.jpg) no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+
+}
+.opaque-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(8, 8, 8, 0.473);
+}
+
+/* About section with cards */
+.card {
+    background-color: #f1fcf1;
+    display: flex;
+}
+.card-title {
+    margin: 0;
+}
+h5 {
+    text-align: center;
+    color: #002d09;
+    padding: 5px;
+}
+h6 {
+    text-align: center;
+    color: #67996e;
+    padding: 5px;
+}
+.about-logo {
+    background-color: #f1fcf1;
+    margin: 0 0 0 15px;
+    padding: 15px;
+    height: 200px;
+    width: 200px;
+}
+
+/* Signup section */
+.signUp {
+    background-color: #c5facb;
+}
+h2, p {
+    color: #002d09;
+    padding: 10px;
+}
+label {
+    font-size: larger;
+}
+.signup-button, .signup-form {
+    padding: 5px;
+    margin: 5px;
+}
+
+/* Footer */
+.footer {
+    background-color: #caca75;
+    margin: auto;
+}
+.footer-img {
+    padding: 10px;
+    height: 100px;
+    width: 100px;
+}
+.social-nav {
+    padding: 5px;
+    text-align: center;
+    color: #002d09;
+}
+.find-us {
+    align-content: center;
+}
+.fab {
+    color: #33a553;
+    font-size: larger;
+}
+
+/* Media Queries */
+
+/* Devices 520px and under (Mobile) */
+@media screen and (max-width: 520px) {
+    /* Navbar */
+    .nav-title {
+        font-size: 1.5rem;
+        padding: 10px;
+        position: relative;
+        bottom: 0px;
+    }
+    /* Callout section */
+    .callout {
+        width: 300px;
+    }
+    .callout p {
+        font-size: 1rem;
+    }
+    .jumbotron-header {
+        font-size: 1.5rem;
+    }
+    .form-group {
+        margin: 0.25rem;
+    }
+    /* About section */
+    .about-logo {
+        height: 150px;
+        width: 150px;
+        position: relative;
+        left: -35px;
+    }
+    h5 {
+        font-size: 1.2rem;
+    }
+    .card-body p {
+    font-size: 1rem;
+    }
+    .row {
+        display: block;
+    }
+    /* Signup section */
+    .signup-title {
+        font-size: 1.2rem;
+        margin: 0px;
+    }
+    .signup-text {
+        font-size: 1rem;
+        margin: 0px;
+    }
+    .signup-form {
+        height: 25px;
+        width: 148px;
+    } 
+    .label {
+        font-size: 1rem;
+    }
+    .signup-button {
+        position: relative;
+        font-size: small;
+    }
+    /* Footer */
+    .footer-img {
+        height: 70px;
+        width: 70px;
+    }
+    .social-nav {
+        font-size: 1rem;
+        position: relative;
+    }
+    .social-links {
+        font-size: small;
+        display: flex;
+    }
+    .rows {
+        display: flex;
+    }
+}
+
+/* Devices equal to an over 520px (Large Mobiles,Tablets,Desktop) */
+@media  screen and (min-width: 520px) {
+    /* Navbar */
+    .profile-button {
+        display: none
+    }
+    .profile-img {
+        display: none;
+    }
+    /* About section */
+    .about-logo {
+        position: relative;
+    }
+}
+
+/* Devices equal  to and over 720px (Tablets, Desktop) */
+@media  screen and (min-width: 720px) {
+    /* About section */
+    .about-logo {
+        position: relative;
+        right: -40px;
+    }
+    /* Footer */
+    
+}
+
+/* Devices no larger than 320px (Small Mobiles) */
+@media screen and (max-width: 320px) {
+    /* Navbar */
+    .profile-button {
+        width: 40px;
+        height: 40px;
+        z-index: 1;
+    }
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        z-index: 2;
+        left: -13px;
+        top: -7px;
+        position: relative;
+    }
+    /* Callout section */
+    .callout {
+        width: 250px;
+    }
+    /* About section */
+    .about-logo {
+        position: relative;
+        right: -50px;
+    }
+}
