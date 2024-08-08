@@ -84,15 +84,16 @@ p {
 .card {
     background-color: #f1fcf1;
     display: flex;
-    padding: 0px;
-}
-#cardInsideYoga, #cardInsideMed {
-    margin: 10px;
 }
 .card-title {
     margin: 0;
 }
-h6, h5 {
+h5 {
+    text-align: center;
+    color: #002d09;
+    padding: 5px;
+}
+h6 {
     text-align: center;
     color: #67996e;
     padding: 5px;
@@ -146,13 +147,14 @@ label {
 
 /* Media Queries */
 @media screen and (max-width: 520px) {
+    /* Navbar */
     .nav-title {
         font-size: 1.5rem;
         padding: 10px;
         position: relative;
         bottom: 0px;
     }
-    
+    /* Callout section */
     .callout {
         width: 300px;
     }
@@ -165,20 +167,28 @@ label {
     .form-group {
         margin: 0.25rem;
     }
-
-
+    /* About section */
     .about-logo {
         height: 150px;
         width: 150px;
         position: relative;
         left: -35px;
-        align-items: center;
     }
-
+    h5 {
+        font-size: 1.2rem;
+    }
+    .card-body p {
+    font-size: 1rem;
+    }
+    .row {
+        display: block;
+    }
+    /* Footer */
     .footer-img {
         height: 70px;
         width: 70px;
     }
+
 }
 
 @media  screen and (min-width: 520px) {
@@ -188,6 +198,12 @@ label {
     .profile-img {
         display: none;
     }
+    .about-logo {
+        position: relative;
+    }
+}
+
+@media  screen and (min-width: 720px) {
     .about-logo {
         position: relative;
         right: -40px;
@@ -210,5 +226,9 @@ label {
     }
     .callout {
         width: 250px;
+    }
+    .about-logo {
+        position: relative;
+        right: -50px;
     }
 }
