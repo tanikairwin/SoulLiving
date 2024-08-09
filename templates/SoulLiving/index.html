@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <!-- Background image with title and book now button -->
+    <div class="jumbotron-fluid callout-container" style="height: 400px">
+        <div class="opaque-overlay"></div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Callout style introduction to page with title and brief text -->
+                <section class="callout jumbotron text-center" style="background-color: #f1fcf1; margin-bottom: 0px; padding: 10px;">
+                    <h2 class="jumbotron-header">Welcome to Soul Living</h2>
+                    <p style="color: #67996e;">A place to rest your soul through yoga and meditation sessions.</p>
+                    <!-- book online now button section -->
+                    <div class="form-group">
+                        <label for="book-now-button"></label>
+                        <!-- button is added with boostrap -->
+                        <button type="button" class="btn btn-success" id="book-now-button">Book Online Now</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!--About and info Section  -->
+    <div class="container-fluid" style="height: fit-content;">
+        <div class="container col-4">
+            <img class="about-logo rounded-circle" src="/static/assets/images/soullivinglogo.png" alt="Soul Living Logo">
+        </div>
+        <div class="container">
+            <h5>Here at Soul Living we offer yoga and meditations session and account secuiry to manage your bookings for flexiblity. Our sessions run 3 days a week including one day on the weekend.</h5>
+            <h6>See below on more information about our sessions.</h6>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 g-4" style="margin-bottom: 18px;">
+            <div class="col">
+              <div class="card">
+                <img src="/static/assets/images/yogaposewomen.jpg" class="card-img-top" alt="Group yoga pose of downward dog">
+                <div class="card-body">
+                  <h5 class="card-title">Yoga</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="/static/assets/images/manmeditating.jpg" class="card-img-top" alt="A man meditating">
+                <div class="card-body">
+                  <h5 class="card-title">Meditation</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sign up Section -->
+    <div class="container-fluid signUp col-md-3s">
+        <div class="container" style="padding-top: 25px; padding-bottom: 25px;">
+            <div class="container col-12 justify-content-center text-center">
+                <h2 class="signup-title">Sign up to Book our Sessions</h2>
+                <p class="signup-text">Enter your email below to create an account with us that will allow you to book and manage your sessions.</p>
+            </div>
+            <div class="container col-12">
+                <div class="row justify-content-center text-centers">
+                    <label class="label" for="user-email">Email Address:</label>
+                    <input class="signup-form" type="email" id="user-email">
+                    <button type="button" class="btn btn-success signup-button">Sign up Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
