@@ -16,7 +16,7 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email','full_name', 'age' 'password1', 'password2')
+        fields = ('username', 'email','full_name', 'age', 'password1', 'password2')
 
     def clean_age(self):
         age = self.cleaned_data.get('age')

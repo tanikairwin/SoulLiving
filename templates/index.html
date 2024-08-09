@@ -105,17 +105,6 @@
                 <h2 class="signup-title">Sign up to Book our Sessions</h2>
                 <p class="signup-text">Enter your email below to create an account with us that will allow you to book and manage your sessions.</p>
             </div>
-            {% extends "base_generic.html" %}
-
-            {% block content %}
-              <h2>Sign Up</h2>
-              <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Sign Up</button>
-              </form>
-            {% endblock %}
-            
             <div class="container col-12">
                 <div class="row justify-content-center text-centers">
                     <label class="label" for="user-email">Email Address:</label>
