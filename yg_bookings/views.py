@@ -16,6 +16,18 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
 
+@method_decorator(login_required, name='dispatch')
+class BookingListView(ListView):
+    """ 
+    This view lists all bookings made by the logged-in user.
+    """
+    model = Booking
+    template_name = 'bookings/booking_list.html'
+
+    def get_queryset(self):
+        return Booking.objects.filter(user=self.request.user)
+
+
 class HomePage(TemplateView):
     """
     Displays home page
