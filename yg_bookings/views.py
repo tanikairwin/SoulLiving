@@ -8,6 +8,14 @@ from .models import YogaClass, Booking
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+class SignUpView(CreateView):
+    """ 
+    This view handles user registration using the CustomUserCreationForm.
+    """
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
+
 class HomePage(TemplateView):
     """
     Displays home page
