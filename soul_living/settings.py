@@ -113,6 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Tells django to use CustomUser model instead of default one that comes with django
+AUTH_USER_MODEL = 'bookings.CustomUser'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
