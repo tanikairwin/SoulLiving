@@ -45,3 +45,16 @@ class HomePage(TemplateView):
     Displays home page
     """
     template_name = 'SoulLiving/index.html'
+
+from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Booking
+
+class BookingListView(ListView):
+    """ 
+    Fetches all available bookings and passes them to the template
+    """
+    model = Sessions
+    template_name = 'yg_bookings/bookings.html'
+    context_object_name = 'bookings-available'
+
