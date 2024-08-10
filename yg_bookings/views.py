@@ -1,13 +1,13 @@
 
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView
+from django.views.generic import ListView, View, TemplateView
 from .forms import CustomUserCreationForm, BookingForm
 from .models import Sessions, Booking
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.contrib import messages
 
 
 class HomePage(TemplateView):
