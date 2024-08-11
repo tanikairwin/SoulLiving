@@ -12,9 +12,21 @@ from django.contrib import messages
 
 class HomePage(TemplateView):
     """
-    Displays home page
+    Displays home page with sign up form 
     """
     template_name = 'yg_bookings/index.html'
+
+    def get(self, request, *args, **kwargs):
+        form = CustomUserCreationForm()
+        return self.render_to_response({'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+        return self.render_to_response({'form': form})
 
 class SignUpView(CreateView):
     """ 
