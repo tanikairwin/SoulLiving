@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 
+<div id="calendar"></div>
+
+<script src="{% static 'fullcalendar/js/main.min.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: '/bookings/json/',  // URL to fetch JSON data
+                eventClick: function(info) {
+                    alert(info.event.title + "\n" + info.event.extendedProps.description);
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
+
     <h1>Available Bookings</h1>
     <ul>
         {% for session in sessions %}
