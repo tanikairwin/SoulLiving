@@ -36,6 +36,13 @@ class BookingListView(ListView):
     template_name = 'yg_bookings/bookings.html'
     context_object_name = 'bookings-available'
 
+class BookView(View):
+    def post(self, request, pk):
+        booking = get_object_or_404(Booking, pk=pk)
+        # Logic for booking the slot
+        messages.success(request, f'You have successfully booked {booking.title}.')
+        return redirect('booking_list')
+
 @method_decorator(login_required, name='dispatch')
 class BookingListView(ListView):
     """ 
