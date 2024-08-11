@@ -77,6 +77,14 @@ class BookingJSONView(View):
         return JsonResponse(events, safe=False)
 
 @method_decorator(login_required, name='dispatch')
+class UserProfilePage(TemplateView):
+    template_name = 'accountpage.html'
+
+    def get(self, request, *args, **kwargs):
+        booked_sessions = request.user.booked_sessions.all()
+        return self.render_to_response({'booked_sessions': booked_sessions})
+
+@method_decorator(login_required, name='dispatch')
 class BookingListView(ListView):
     """ 
     This view lists all bookings made by the logged-in user.
