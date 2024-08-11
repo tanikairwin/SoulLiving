@@ -14,11 +14,7 @@ class HomePage(TemplateView):
     """
     Displays home page
     """
-    template_name = 'SoulLiving/index.html'
-
-from django.shortcuts import render
-from django.views.generic import ListView
-from .models import Booking
+    template_name = 'yg_bookings/index.html'
 
 class SignUpView(CreateView):
     """ 
@@ -28,7 +24,7 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'SoulLiving/index.html'
 
-class BookingListView(ListView):
+class BookingView(ListView):
     """ 
     Fetches all available bookings and passes them to the template
     """
@@ -36,11 +32,22 @@ class BookingListView(ListView):
     template_name = 'yg_bookings/bookings.html'
     context_object_name = 'bookings-available'
 
-class BookView(View):
-    def post(self, request, pk):
-        booking = get_object_or_404(Booking, pk=pk)
-        # Logic for booking the slot
-        messages.success(request, f'You have successfully booked {session.title}.')
+    def get(self, request):
+        sessions = Sessions.objects.all()
+        return render(request, 'yg_bookings/bookings.html', {'sessions': sessions})
+
+@method_decorator(login_required, name='dispatch')
+class BookingConfirm(View):
+    """
+    Displays booking confirmation page, requires login
+    """
+    def get(self, request, session_id):
+        session = session.objects.get(id=session_id)
+        return render(request, 'confirm_booking.html', {'session': session})
+
+    @method_decorator(login_required, name='dispatch')
+    def post(self, request, session_id):
+        # Handle booking logic here
         return redirect('bookings')
 
 class BookingJSONView(View):
@@ -63,20 +70,7 @@ class BookingListView(ListView):
     This view lists all bookings made by the logged-in user.
     """
     model = Booking
-    template_name = 'SoulLiving/accountpage.html'
+    template_name = 'yg_bookings/bookings.html'
 
     def get_queryset(self):
         return Booking.objects.filter(user=self.request.user)
-
-@method_decorator(login_required, name='dispatch')
-class BookingCreateView(CreateView):
-    """ 
-    This view handles the creation of a new booking.
-    """
-    form_class = BookingForm
-    success_url = reverse_lazy('bookings')
-    template_name = 'bookings/booking_form.html'
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
