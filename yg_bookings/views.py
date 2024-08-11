@@ -2,6 +2,7 @@
 from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View, TemplateView
 from .forms import CustomUserCreationForm, BookingForm
@@ -47,6 +48,9 @@ class BookingView(ListView):
     def get(self, request):
         sessions = Sessions.objects.all()
         return render(request, 'yg_bookings/bookings.html', {'sessions': sessions})
+
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
 
 @method_decorator(login_required, name='dispatch')
 class BookingConfirm(View):
