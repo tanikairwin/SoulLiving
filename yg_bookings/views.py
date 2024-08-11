@@ -35,7 +35,7 @@ class SignUpView(CreateView):
     """
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
-    template_name = 'SoulLiving/index.html'
+    template_name = 'yg_bookings/index.html'
 
 class BookingView(ListView):
     """ 
@@ -50,7 +50,7 @@ class BookingView(ListView):
         return render(request, 'yg_bookings/bookings.html', {'sessions': sessions})
 
 class LoginView(LoginView):
-    template_name = 'login.html'
+    template_name = 'yg_bookings/login.html'
 
 @method_decorator(login_required, name='dispatch')
 class BookingConfirm(View):
@@ -59,7 +59,7 @@ class BookingConfirm(View):
     """
     def get(self, request, session_id):
         session = session.objects.get(id=session_id)
-        return render(request, 'confirm_booking.html', {'session': session})
+        return render(request, 'yg_bookings/confirm_booking.html', {'session': session})
 
     @method_decorator(login_required, name='dispatch')
     def post(self, request, session_id):
@@ -82,7 +82,7 @@ class BookingJSONView(View):
 
 @method_decorator(login_required, name='dispatch')
 class UserProfilePage(TemplateView):
-    template_name = 'accountpage.html'
+    template_name = 'yg_bookings/accountpage.html'
 
     def get(self, request, *args, **kwargs):
         booked_sessions = request.user.booked_sessions.all()
