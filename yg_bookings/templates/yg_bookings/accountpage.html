@@ -1,1 +1,23 @@
 {% extends "base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Account</title>
+</head>
+<body>
+    <h1>{{ request.user.username }}'s Account</h1>
+    <h2>Booked Sessions</h2>
+    <ul>
+        {% for session in booked_sessions %}
+            <li>
+                <strong>{{ session.title }}</strong><br>
+                {{ session.description }}<br>
+                {{ session.date }}<br>
+                {{ session.duration }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
