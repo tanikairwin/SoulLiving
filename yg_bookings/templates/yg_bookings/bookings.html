@@ -1,26 +1,19 @@
-{% extends "base.html" %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Booking Schedule</title>
-</head>
-<body>
-
+{% extends "yg_bookings/base.html" %}
+{% block content %}
 
 <div id="calendar"></div>
 
 
 <h1>Available Bookings</h1>
 <ul>
-    {% for session in sessions %}
+    {% for session in Sessions %}
         <li>
             <h2>{{ booking.title }}</h2>
             <p>Type: {{ session.type }}</p>
             <p>Description: {{ session.description }}</p>
             <p>Date: {{ session.date }}</p>
             <p>Time: {{ session.time }}</p>
-            <p>Length: {{ session.length }}</p>
+            <p>Duration: {{ session.duration }}</p>
             <form method="POST" action="{% url 'book' booking.id %}">
                 {% csrf_token %}
                 <button type="submit">Book Now</button>
@@ -45,6 +38,5 @@
             calendar.render();
         });
     </script>
-</body>
-</html>
+{% endblock %}
 
