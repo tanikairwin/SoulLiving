@@ -40,8 +40,22 @@ class BookView(View):
     def post(self, request, pk):
         booking = get_object_or_404(Booking, pk=pk)
         # Logic for booking the slot
-        messages.success(request, f'You have successfully booked {booking.title}.')
-        return redirect('booking_list')
+        messages.success(request, f'You have successfully booked {session.title}.')
+        return redirect('bookings')
+
+class BookingJSONView(View):
+    def get(self, request):
+        sessions = session.objects.all()
+        events = []
+        for session in sessions:
+            events.append({
+                'title': session.title,
+                'type': session.type,
+                'start': session.date.isoformat() + 'T' + booking.time.isoformat(),
+                'description': session.description,
+                'length': session.length,
+            })
+        return JsonResponse(events, safe=False)
 
 @method_decorator(login_required, name='dispatch')
 class BookingListView(ListView):

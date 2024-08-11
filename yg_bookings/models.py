@@ -15,6 +15,7 @@ class Sessions(models.Model):
     """ 
     Defining the session class model-Represents all the sessions avaible for a user to book
     """
+    title = models.CharField(max_length=100)
     type = models.CharField(max_length=100)
     description = models.TextField()
     date = models.DateTimeField()
