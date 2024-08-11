@@ -5,7 +5,7 @@
 
 
 <h1>Available Bookings</h1>
-<ul>
+<!-- <ul>
     {% for session in Sessions %}
         <li>
             <h2>{{ booking.title }}</h2>
@@ -20,23 +20,33 @@
             </form>
         </li>
     {% endfor %}
-</ul>
+</ul> -->
 
-<script src="static/FullCalendar"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js"></script>
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                events: '/bookings/json/',  // URL to fetch JSON data
-                eventClick: function(info) {
-                    alert(info.event.title + "\n" + info.event.extendedProps.description);
-                }
-            });
-
-            calendar.render();
-        });
-    </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        events: '/sessions/',  // URL to fetch the sessions
+        navLinks: true,  // can click day/week names to navigate views
+        editable: false,
+        selectable: true,
+        nowIndicator: true,
+        eventClick: function(info) {
+            alert('Session: ' + info.event.title + '\nStart: ' + info.event.start.toLocaleString() + '\nEnd: ' + info.event.end.toLocaleString());
+        }
+    });
+    calendar.render();
+});
+</script>
 {% endblock %}
 

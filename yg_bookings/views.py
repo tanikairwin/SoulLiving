@@ -48,6 +48,17 @@ class BookingView(ListView):
     def get(self, request):
         sessions = Sessions.objects.all()
         return render(request, 'yg_bookings/bookings.html', {'sessions': sessions})
+        
+def session_list(request):
+    sessions = Session.objects.all()
+    session_list = []
+    for session in sessions:
+        session_list.append({
+            'title': session.title,
+            'start': session.start_time.isoformat(),
+            'end': session.end_time.isoformat(),
+        })
+    return JsonResponse(session_list, safe=False)
 
 class LoginView(LoginView):
     template_name = 'yg_bookings/login.html'

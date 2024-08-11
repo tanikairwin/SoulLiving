@@ -20,7 +20,7 @@ class Sessions(models.Model):
     description = models.TextField()
     date = models.DateTimeField()
     time = models.DateTimeField()
-    duration = models.DurationField()
+    duration = models.DurationField(default="1hour 30mins")
     booked_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='booked_sessions', null=True, blank=True)
 
     def __str__(self):
