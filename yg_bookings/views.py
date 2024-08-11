@@ -49,7 +49,7 @@ class BookingView(ListView):
         sessions = Sessions.objects.all()
         return render(request, 'yg_bookings/bookings.html', {'sessions': sessions})
 
-class CustomLoginView(LoginView):
+class LoginView(LoginView):
     template_name = 'login.html'
 
 @method_decorator(login_required, name='dispatch')
