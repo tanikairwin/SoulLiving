@@ -25,7 +25,7 @@ class HomePage(TemplateView):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')
+            return redirect('bookings')
         return self.render_to_response({'form': form})
 
 class SignUpView(CreateView):
