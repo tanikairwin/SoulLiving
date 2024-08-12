@@ -19,8 +19,9 @@ class Sessions(models.Model):
     type = models.CharField(max_length=100)
     description = models.TextField()
     date = models.DateTimeField()
-    time = models.DateTimeField()
-    duration = models.DurationField(default="1hour 30mins")
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    duration = models.DurationField()
     booked_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='booked_sessions', null=True, blank=True)
 
     def __str__(self):

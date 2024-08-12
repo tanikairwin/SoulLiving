@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 import pytz
 
 # Setup Django environment
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'SoulLiving/.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'soul_living.settings')
 django.setup()
 
 from yg_bookings.models import Sessions
@@ -37,7 +37,6 @@ def create_sessions():
                     time=start_datetime,
                     end_time=end_datetime,
                     description=f"{title} session on {single_date.strftime('%A')} at {time}",
-                    location="Yoga Studio"
                 )
 
     print('Successfully created sessions')
