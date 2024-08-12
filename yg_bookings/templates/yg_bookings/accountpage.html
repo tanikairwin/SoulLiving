@@ -1,16 +1,26 @@
 {% extends "yg_bookings/base.html" %}
 
 {% block content %}
-    <h1>{{ request.user.username }}'s Account</h1>
-    <h2>Booked Sessions</h2>
-    <ul>
-        {% for session in booked_sessions %}
-            <li>
-                <strong>{{ session.title }}</strong><br>
-                {{ session.description }}<br>
-                {{ session.date }}<br>
-                {{ session.duration }}<br>
-            </li>
-        {% endfor %}
-    </ul>
+<h1>{{ request.user.username }}'s Account</h1>
+<p>Full Name: {{ request.user.full_name }}</p>
+<p>Email: {{ request.user.email }}</p>
+<a href="{% url 'update_account' %}">Update Account Details</a>
+
+<h2>Booked Sessions</h2>
+<ul>
+    {% for booking in booked_sessions %}
+        <li>
+            <strong>{{ booking.session.title }}</strong><br>
+            {{ booking.session.description }}<br>
+            {{ booking.session.date }}<br>
+            {{ booking.session.duration }}<br>
+            <form method="post" action="{% url 'cancel_booking' booking.id %}">
+                {% csrf_token %}
+                <button type="submit">Cancel Booking</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'book_session' %}">Book a New Session</a>
 {% endblock %}
