@@ -39,6 +39,12 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'yg_bookings/index.html'
 
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        messages.success(self.request, 'You have successfully registered.')
+        return redirect('accountpage')
+
 class BookingView(ListView):
     """ 
     Fetches all available bookings and passes them to the template
