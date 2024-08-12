@@ -48,7 +48,7 @@ class BookingView(ListView):
     context_object_name = 'bookings-available'
 
     def get(self, request):
-        if request.is_ajax():
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
             start = request.GET.get('start', None)
             end = request.GET.get('end', None)
 
