@@ -64,29 +64,25 @@ class BookingView(ListView):
                     'start': session.start_time.isoformat(),
                     'end': session.end_time.isoformat(),
                     'description': session.description,
-                    'duration': session.duration,
+                    'duration': str(session.duration)
                 })
 
             return JsonResponse(sessions_list, safe=False)
 
-        return render(request, 'yg_bookings/bookings.html')
-
-
-
-class SessionsView(View):        
-    def session_list(request):
-        sessions = Sessions.objects.all()
-        session_list = []
-        for session in sessions:
-            session_list.append({
-                'title': session.title,
-                'date': session.date.isoformat(),
-                'time': session.time.isoformat(),
-            })
-            return JsonResponse(session_list, safe=False)
+        return super().get(request)
 
 class LoginView(LoginView):
     template_name = 'yg_bookings/login.html'
+    """
+        Custom login view to redirect to profile page with success message.
+    """
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'You have successfully logged in.')
+        return response
+
+    def get_success_url(self):
+        return reverse('profile')
 
 @method_decorator(login_required, name='dispatch')
 class BookingConfirm(View):
@@ -112,7 +108,7 @@ class BookingJSONView(View):
                 'type': session.type,
                 'start': session.date.isoformat() + 'T' + booking.time.isoformat(),
                 'description': session.description,
-                'duration': session.duration,
+                'duration': str(session.duration),
             })
         return JsonResponse(events, safe=False)
 
@@ -134,3 +130,29 @@ class BookingListView(ListView):
 
     def get_queryset(self):
         return Booking.objects.filter(user=self.request.user)
+
+
+# class SessionsView(View):        
+#      def get(self, request):
+#         start = request.GET.get('start', None)
+#         end = request.GET.get('end', None)
+
+#         if start and end:
+#             start_date = datetime.fromisoformat(start)
+#             end_date = datetime.fromisoformat(end)
+
+#             sessions = Sessions.objects.filter(start_time__gte=start_date, end_time__lte=end_date)
+#             sessions_list = []
+
+#             for session in sessions:
+#                 sessions_list.append({
+#                     'title': session.title,
+#                     'start': session.start_time.isoformat(),
+#                     'end': session.end_time.isoformat(),
+#                     'description': session.description,
+#                     'duration': session.duration
+#                 })
+
+#             return JsonResponse(sessions_list, safe=False)
+
+#         return JsonResponse({'error': 'Invalid dates'}, status=400)
