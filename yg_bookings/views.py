@@ -12,7 +12,7 @@ from django.contrib import messages
 from django.http import JsonResponse
 from datetime import datetime
 
-
+# User Registration, Login and Profile views
 class HomePage(TemplateView):
     """
     Displays home page with sign up form 
@@ -44,6 +44,60 @@ class SignUpView(CreateView):
         login(self.request, user)
         messages.success(self.request, 'You have successfully registered.')
         return redirect('accountpage')
+
+@method_decorator(login_required, name='dispatch')
+class ProfileView(TemplateView):
+    """
+    Displays the account profile page after a user logs in.
+    """
+    template_name = 'yg_bookings/accountpage.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        booked_sessions = Sessions.objects.filter(user=self.request.user)
+        context['booked_sessions'] = booked_sessions
+        return context
+
+@method_decorator(login_required, name='dispatch')
+class UpdateAccountView(UpdateView):
+    """
+    This view updates the users account details"
+    """
+    model = CustomUser
+    form_class = CustomUserChangeForm
+    template_name = 'yg_bookings/update_account.html'
+    success_url = reverse_lazy('profile')
+
+    def get_object(self):
+        return self.request.user
+
+class LoginView(LoginView):
+    template_name = 'yg_bookings/login.html'
+    """
+        Custom login view to redirect to profile page with success message.
+    """
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'You have successfully logged in.')
+        return response
+
+    def get_success_url(self):
+        return reverse('accountpage')
+
+# @method_decorator(login_required, name='dispatch')
+# class UserProfilePage(TemplateView):
+#     template_name = 'yg_bookings/accountpage.html'
+
+#     def get(self, request, *args, **kwargs):
+#         booked_sessions = request.user.booked_sessions.all()
+#         return self.render_to_response({'booked_sessions': booked_sessions})
+
+
+
+
+
+
+
 
 class BookingView(ListView):
     """ 
@@ -77,31 +131,7 @@ class BookingView(ListView):
 
         return super().get(request)
 
-class LoginView(LoginView):
-    template_name = 'yg_bookings/login.html'
-    """
-        Custom login view to redirect to profile page with success message.
-    """
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        messages.success(self.request, 'You have successfully logged in.')
-        return response
 
-    def get_success_url(self):
-        return reverse('profile')
-
-@method_decorator(login_required, name='dispatch')
-class ProfileView(TemplateView):
-    """
-    Displays the account profile page after a user logs in.
-    """
-    template_name = 'yg_bookings/profile.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        booked_sessions = Sessions.objects.filter(user=self.request.user)
-        context['booked_sessions'] = booked_sessions
-        return context
 
 @method_decorator(login_required, name='dispatch')
 class BookingConfirm(View):
@@ -130,14 +160,6 @@ class BookingJSONView(View):
                 'duration': str(session.duration),
             })
         return JsonResponse(events, safe=False)
-
-@method_decorator(login_required, name='dispatch')
-class UserProfilePage(TemplateView):
-    template_name = 'yg_bookings/accountpage.html'
-
-    def get(self, request, *args, **kwargs):
-        booked_sessions = request.user.booked_sessions.all()
-        return self.render_to_response({'booked_sessions': booked_sessions})
 
 @method_decorator(login_required, name='dispatch')
 class BookingListView(ListView):

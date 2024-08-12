@@ -36,7 +36,7 @@ class BookingForm(forms.ModelForm):
 
 class CustomUserChangeForm(UserChangeForm):
     """
-    This form allows for users ro update there profile information
+    This form allows for users to update there profile information
     """
     class Meta:
         model = CustomUser
