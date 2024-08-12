@@ -28,17 +28,20 @@ def create_sessions():
         if single_date.strftime('%A') in days_of_week:
             for start_time, duration in session_times:
                 start_datetime = timezone.localize(datetime.combine(single_date, datetime.strptime(start_time, '%H:%M').time()))
-                end_datetime = timezone.localize(datetime.combine(single_date, datetime.strptime(end_time, '%H:%M').time()))
-                duration = end_time - start_time
+                end_datetime = start_datetime + timedelta(minutes=duration)
 
-                title = f"{'Meditation' if time == '19:00' else 'Yoga'} {'and Yoga' if time == '12:00' else ''}"
-                
-                Sessions.objects.create(
-                    title=title,
-                    start_time=start_datetime,
-                    duration=duration,
-                    description=f"{title} session on {single_date.strftime('%A')} at {time}",
-                )
+                print(f"Creating session: Start: {start_datetime}, End: {end_datetime}")
+
+                title = f"{'Meditation' if start_time == '19:00' else 'Yoga'} {'and Yoga' if start_time == '12:00' else ''}"
+                try:
+                    Sessions.objects.create(
+                        title=title,
+                        start_time=start_datetime,
+                        duration=timedelta(minutes=duration),
+                        description=f"{title} session on {single_date.strftime('%A')} at {start_time}",
+                    )
+                except Exception as e:
+                    print(f"Error creating session: {e}")
 
     print('Successfully created sessions')
 

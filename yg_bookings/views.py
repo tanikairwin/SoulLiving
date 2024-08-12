@@ -10,6 +10,7 @@ from .models import Sessions, Booking
 from django.shortcuts import render
 from django.contrib import messages
 from django.http import JsonResponse
+from datetime import datetime
 
 
 class HomePage(TemplateView):
