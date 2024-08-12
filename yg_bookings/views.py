@@ -48,8 +48,30 @@ class BookingView(ListView):
     context_object_name = 'bookings-available'
 
     def get(self, request):
-        sessions = Sessions.objects.all()
-        return render(request, 'yg_bookings/bookings.html', {'session': Sessions})
+        if request.is_ajax():
+            start = request.GET.get('start', None)
+            end = request.GET.get('end', None)
+
+            start_date = datetime.fromisoformat(start)
+            end_date = datetime.fromisoformat(end)
+
+            sessions = Sessions.objects.filter(start_time__gte=start_date, end_time__lte=end_date)
+            sessions_list = []
+
+            for session in sessions:
+                sessions_list.append({
+                    'title': session.title,
+                    'start': session.start_time.isoformat(),
+                    'end': session.end_time.isoformat(),
+                    'description': session.description,
+                    'duration': session.duration,
+                })
+
+            return JsonResponse(sessions_list, safe=False)
+
+        return render(request, 'yg_bookings/bookings.html')
+
+
 
 class SessionsView(View):        
     def session_list(request):
