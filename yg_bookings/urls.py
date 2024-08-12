@@ -6,7 +6,8 @@ from .views import (
     BookingView, 
     BookingConfirm, 
     LoginView, 
-    BookingJSONView
+    BookingJSONView,
+    ProfileView
 )
 
 urlpatterns = [
