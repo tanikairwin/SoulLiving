@@ -9,6 +9,7 @@ from .forms import CustomUserCreationForm, BookingForm
 from .models import Sessions, Booking
 from django.shortcuts import render
 from django.contrib import messages
+from django.http import JsonResponse
 
 
 class HomePage(TemplateView):
@@ -45,20 +46,20 @@ class BookingView(ListView):
     template_name = 'yg_bookings/bookings.html'
     context_object_name = 'bookings-available'
 
-    def get(self, request):
-        sessions = Sessions.objects.all()
-        return render(request, 'yg_bookings/bookings.html', {'sessions': sessions})
+    # def get(self, request):
+    #     sessions = Sessions.objects.all()
+    #     return render(request, 'bookings.html', {'session': sessions})
         
 def session_list(request):
-    sessions = Session.objects.all()
+    sessions = Sessions.objects.all()
     session_list = []
     for session in sessions:
         session_list.append({
             'title': session.title,
-            'start': session.start_time.isoformat(),
-            'end': session.end_time.isoformat(),
+            'date': session.date.isoformat(),
+            'time': session.time.isoformat(),
         })
-    return JsonResponse(session_list, safe=False)
+        return JsonResponse(session_list, safe=False)
 
 class LoginView(LoginView):
     template_name = 'yg_bookings/login.html'
@@ -77,19 +78,19 @@ class BookingConfirm(View):
         # Handle booking logic here
         return redirect('bookings')
 
-class BookingJSONView(View):
-    def get(self, request):
-        sessions = session.objects.all()
-        events = []
-        for session in sessions:
-            events.append({
-                'title': session.title,
-                'type': session.type,
-                'start': session.date.isoformat() + 'T' + booking.time.isoformat(),
-                'description': session.description,
-                'length': session.length,
-            })
-        return JsonResponse(events, safe=False)
+# class BookingJSONView(View):
+#     def get(self, request):
+#         sessions = session.objects.all()
+#         events = []
+#         for session in sessions:
+#             events.append({
+#                 'title': session.title,
+#                 'type': session.type,
+#                 'start': session.date.isoformat() + 'T' + booking.time.isoformat(),
+#                 'description': session.description,
+#                 'duration': session.duration,
+#             })
+#         return JsonResponse(events, safe=False)
 
 @method_decorator(login_required, name='dispatch')
 class UserProfilePage(TemplateView):

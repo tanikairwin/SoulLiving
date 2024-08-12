@@ -1,4 +1,5 @@
 {% extends "yg_bookings/base.html" %}
+{% load static %}
 {% block content %}
 
 <div id="calendar"></div>
@@ -36,13 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        events: '/sessions/',  // URL to fetch the sessions
+        events: '/yg_bookings/sessions/',  // URL to fetch the sessions
         navLinks: true,  // can click day/week names to navigate views
         editable: false,
         selectable: true,
         nowIndicator: true,
         eventClick: function(info) {
-            alert('Session: ' + info.event.title + '\nStart: ' + info.event.start.toLocaleString() + '\nEnd: ' + info.event.end.toLocaleString());
+            alert('Session: ' + info.event.title + '\nDate: ' + info.event.date.toLocaleString() + '\nTime: ' + info.event.time.toLocaleString());
         }
     });
     calendar.render();
