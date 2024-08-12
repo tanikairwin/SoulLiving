@@ -31,3 +31,13 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = ['session']
+
+
+
+class CustomUserChangeForm(UserChangeForm):
+    """
+    This form allows for users ro update there profile information
+    """
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'full_name', 'email')

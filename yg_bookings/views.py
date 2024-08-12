@@ -85,6 +85,19 @@ class LoginView(LoginView):
         return reverse('profile')
 
 @method_decorator(login_required, name='dispatch')
+class ProfileView(TemplateView):
+    """
+    Displays the account profile page after a user logs in.
+    """
+    template_name = 'yg_bookings/profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        booked_sessions = Sessions.objects.filter(user=self.request.user)
+        context['booked_sessions'] = booked_sessions
+        return context
+
+@method_decorator(login_required, name='dispatch')
 class BookingConfirm(View):
     """
     Displays booking confirmation page, requires login
