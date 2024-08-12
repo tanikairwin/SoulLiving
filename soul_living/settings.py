@@ -31,7 +31,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-tanikairwin-soulliving-ef9rptmem60.ws-eu115.gitpod.io','.herokuapp.com']
+ALLOWED_HOSTS = ['8000-tanikair-soulliving-d7cjqu320sp.ws.codeinstitute-ide.net','.herokuapp.com']
 CSRF_TRUSTED_ORIGINS = ['https://codeinstitute-ide.net','https://herokuapp.com']
 
 # Application definition
@@ -46,7 +46,18 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'yg_bookings',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'soul_living.urls'
@@ -113,6 +125,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Tells django to use CustomUser model instead of default one that comes with django
+AUTH_USER_MODEL = 'yg_bookings.CustomUser'
+
+# Configure allauth settings
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+LOGIN_REDIRECT_URL = '/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
