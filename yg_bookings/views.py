@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View, TemplateView
-from .forms import CustomUserCreationForm, BookingForm, UserChangeForm, CustomUserChangeForm
+from .forms import SignUpForm, BookingForm, UserChangeForm, CustomUserChangeForm
 from .models import Sessions, Booking, CustomUser
 from django.shortcuts import render
 from django.contrib import messages
@@ -19,23 +19,28 @@ class HomePage(TemplateView):
     """
     template_name = 'yg_bookings/index.html'
 
-    
-    def register_user(request):
-        if request.method == 'POST':
-            form = SignUpForm(request.POST)
-            if form.is_valid():
-                form.save()
-                # Authenticate and login
-                username = form.cleaned_data['username']
-                password = form.cleaned_data['password1']
-                user = authenticate(username=username, password=password)
-                login(request, user)
-                messages.success(request, "You Have Successfully Registered! Welcome!")
-                return redirect('accountpage')
-        else:
-            form = SignUpForm()
-            return render(request, 'index.html', {'form':form})
-return render(request, 'index.html', {'form':form})
+
+# class SignUp(CreateView):
+#     template_name='yg_bookings/registration.html'
+#     """ 
+#     This view handles user registration using the CustomUserCreationForm.
+#     """
+def register_user(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Authenticate and login
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, "You Have Successfully Registered! Welcome!")
+            return redirect('accountpage')
+    else:
+        form = SignUpForm()
+        return render(request, 'registration.html', {'form':form})
+    return render(request, 'registration.html', {'form':form})
 
 
 
