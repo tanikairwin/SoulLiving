@@ -18,8 +18,8 @@ class Sessions(models.Model):
     title = models.CharField(max_length=100, default="Default Session Title")
     type = models.CharField(max_length=100)
     description = models.TextField()
-    date = models.DateTimeField()
-    time = models.DateTimeField()
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
     duration = models.DurationField()
     booked_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='booked_sessions', null=True, blank=True)
 

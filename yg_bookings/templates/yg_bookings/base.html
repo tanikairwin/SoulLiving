@@ -15,7 +15,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="48x48" href="/static/assets/Faviconlinks/favicon.ico">
     <!-- Link to FullCalendar CSS -->
-    <link rel="stylesheet" href="{% static 'fullcalendar-6.1.15.zip' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
     <!-- Link to jQuery (required by FullCalendar) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Meta tags, kewywords, author for SEO -->
@@ -44,7 +44,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-links navbar-nav w-100 mx-auto d-flex row justify-content-center">
                     <li class="active nav-item mx-auto">
-                        <a class="nav-link" href="{% url 'bookings' %}" style="color: #67996e;">Bookings</a>
+                        <a class="nav-link" href="{% url 'register' %}" style="color: #67996e;">Registration</a>
                     </li>
                     <li class="nav-item mx-auto   ">
                         <a class="nav-link" href="{% url 'login' %}" style="color: #67996e;">Log In</a>

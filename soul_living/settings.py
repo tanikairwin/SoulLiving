@@ -31,8 +31,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-tanikair-soulliving-d7cjqu320sp.ws.codeinstitute-ide.net','.herokuapp.com']
-CSRF_TRUSTED_ORIGINS = ['https://codeinstitute-ide.net','https://herokuapp.com']
+ALLOWED_HOSTS = ['8000-tanikair-soulliving-d7cjqu320sp.ws.codeinstitute-ide.net','.herokuapp.com',]
+CSRF_TRUSTED_ORIGINS = ['https://codeinstitute-ide.net','https://herokuapp.com',]
 
 # Application definition
 
@@ -76,7 +76,7 @@ ROOT_URLCONF = 'soul_living.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
