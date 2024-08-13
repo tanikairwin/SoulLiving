@@ -37,7 +37,7 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "You Have Successfully Registered! Welcome!")
-            return redirect('accountpage')
+            return redirect('yg_bookings/accountpage.html')
     else:
         form = SignUpForm()
         return render(request, 'home/register.html', {'form':form})
