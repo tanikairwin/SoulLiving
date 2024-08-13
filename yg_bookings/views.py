@@ -56,10 +56,22 @@ class CustomLoginView(LoginView):
     """
         Custom login view to display login form with success message.
     """
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        messages.success(self.request, 'You have successfully logged in.')
-        return response
+    def login_request(request):
+        if request.method == 'POST':
+            username = request.POST['username']
+            password = request.POST['password']
+            # Authenticate
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, "You are now logged in.")
+                return redirect('login')
+            else:
+                messages.success(request, "There Was An Error Logging In, Please Try Again...")
+                return redirect('login')
+        else:
+            return render(request, 'login')
+
 
 def userlogout(request):
     logout(request)
