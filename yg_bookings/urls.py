@@ -3,18 +3,14 @@ from . import views
 from django.contrib.auth.views import LoginView, LogoutView
 from .views import (
     HomePage, 
-    # SignUpView,  
-    # BookingView, 
-    # BookingConfirm,
-    # SignUp, 
     LoginView, 
-    # BookingJSONView,
     ProfileView,
+    register_user
 )
 
 urlpatterns = [
     path('', HomePage.as_view(), name='home'),
-    path('registration/', views.register_user, name='registration'),
+    path('register/', views.register_user, name='register'),
     # path('signup/', SignUpView.as_view(), name='signup'),
     # path('useraccount/', BookingListView.as_view(), name='booking_list'),
     # path('bookings/', BookingView.as_view(), name='bookings'),

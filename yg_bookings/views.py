@@ -7,10 +7,11 @@ from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View, TemplateView
 from .forms import SignUpForm, BookingForm, UserChangeForm, CustomUserChangeForm
 from .models import Sessions, Booking, CustomUser
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import JsonResponse
 from datetime import datetime
+from django.contrib.auth import authenticate, login, logout
 
 # User Registration, Login and Profile views
 class HomePage(TemplateView):
@@ -39,8 +40,9 @@ def register_user(request):
             return redirect('accountpage')
     else:
         form = SignUpForm()
-        return render(request, 'registration.html', {'form':form})
-    return render(request, 'registration.html', {'form':form})
+        return render(request, 'home/register.html')
+
+    return render(request, 'home/register.html', {'form':form})
 
 
 
