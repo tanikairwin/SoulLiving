@@ -44,22 +44,22 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-links navbar-nav w-100 mx-auto d-flex row justify-content-center">
 
-                    {% if user.is_authenticated %}
+                    <!-- {% if user.is_authenticated %}
                     <li class="active nav-item mx-auto">
-                    <a class="nav-link" href="" style="color: #67996e;">Add Record</a>
+                    <a class="nav-link" href="" style="color: #67996e;">Book Session</a>
                     </li>
                     <li class="nav-item mx-auto">
                     <a class="nav-link" href="" style="color: #67996e;">Logout</a>
                     </li>
 
-                    {% else %}
+                    {% else %} -->
                     <li class="active nav-item mx-auto">
                     <a class="nav-link" href="{% url 'register' %}" style="color: #67996e;">Register</a>
                     </li>
                     <li class="nav-item mx-auto">
                     <a class="nav-link" href="{% url 'login' %}" style="color: #67996e;">Login</a>
                     </li>        
-                    {% endif %}
+                    <!-- {% endif %} -->
                 </ul>
             </div>
         </nav>  
