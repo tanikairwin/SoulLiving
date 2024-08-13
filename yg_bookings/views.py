@@ -52,7 +52,7 @@ class ProfileView(TemplateView):
 
 
 class CustomLoginView(LoginView):
-    template_name = 'yg_bookings/login.html'
+    template_name = 'registration/login.html'
     """
         Custom login view to display login form with success message.
     """
