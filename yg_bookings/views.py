@@ -31,7 +31,7 @@ def register_user(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('successreg.html')
+            return redirect('success.html')
     else:
         form = SignUpForm()
         return render(request, 'home/register.html', {'form':form})
