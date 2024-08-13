@@ -31,10 +31,9 @@ def register_user(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('success.html')
+            return redirect('registration_success')
     else:
         form = SignUpForm()
-        return render(request, 'home/register.html', {'form':form})
 
     return render(request, 'home/register.html', {'form':form})
 
@@ -56,6 +55,32 @@ class ProfileView(TemplateView):
         context['booked_sessions'] = booked_sessions
         return context
 
+class CustomLoginView(LoginView):
+    template_name = 'yg_bookings/login.html'
+    """
+        Custom login view to redirect to profile page with success message.
+    """
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'You have successfully logged in.')
+        return response
+
+    def get_success_url(self):
+        return reverse('profile')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @method_decorator(login_required, name='dispatch')
 class UpdateAccountView(UpdateView):
     """
@@ -69,18 +94,7 @@ class UpdateAccountView(UpdateView):
     def get_object(self):
         return self.request.user
 
-class LoginView(LoginView):
-    template_name = 'registration/login.html'
-    """
-        Custom login view to redirect to profile page with success message.
-    """
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        messages.success(self.request, 'You have successfully logged in.')
-        return response
 
-    def get_success_url(self):
-        return reverse('yg_bookings/accountpage.html')
 
 # @method_decorator(login_required, name='dispatch')
 # class UserProfilePage(TemplateView):
