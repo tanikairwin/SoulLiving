@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView, LoginView
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View, TemplateView
-from .forms import SignUpForm, BookingForm, UserChangeForm, CustomUserChangeForm
+from .forms import SignUpForm, BookingForm
 from .models import Sessions, Booking, CustomUser
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -16,12 +16,15 @@ from django.contrib.auth import authenticate, login, logout
 # User Registration, Login and Profile views
 class HomePage(TemplateView):
     """
-    Displays home page with sign up form 
+    Displays home page with nav links 
     """
     template_name = 'yg_bookings/index.html'
 
 
 def register_user(request):
+    """
+    Function that displays SignUpForm and authenticates the user on the registration page
+    """
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -51,7 +54,7 @@ class ProfileView(TemplateView):
 class CustomLoginView(LoginView):
     template_name = 'yg_bookings/login.html'
     """
-        Custom login view to redirect to profile page with success message.
+        Custom login view to display login form with success message.
     """
     def form_valid(self, form):
         response = super().form_valid(form)
