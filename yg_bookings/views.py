@@ -43,8 +43,8 @@ def register_user(request):
 
 
 class CustomLoginView(LoginView):
-    template_name = 'registration /login.html'
-    success_url = reverse_lazy('login')
+    template_name = 'registration/login.html'
+    success_url = reverse_lazy('registration/login.html')
     """
         Custom login view to display login form with success message.
     """
