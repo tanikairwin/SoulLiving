@@ -32,13 +32,16 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "You Have Successfully Registered! Welcome!")
-            return redirect('registration/login.html')
+            return redirect('register/login.html')
     else:
         form = SignUpForm()
         return render(request, 'home/register.html', {'form':form})
 
     return render(request, 'home/register.html', {'form':form})
 
+
+# def registration_success_view(request):
+#     return render(request, 'yg_bookings/success.html')
 
 
 @method_decorator(login_required, name='dispatch')
