@@ -11,7 +11,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
-import logging
 
 
 # User Registration, Login and Profile views
@@ -65,21 +64,21 @@ class CustomLoginView(LoginView):
             return render(request, 'login')
 
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
-def custom_logout_view(request):
-    if request.method == 'POST':
-        logger.info(f"Logging out user: {request.user}")
-        logout(request)
-        return redirect('home')
-    else:
-        logger.info("Non-POST request received for logout.")
-        return redirect('home')
+# def custom_logout_view(request):
+#     if request.method == 'POST':
+#         logger.info(f"Logging out user: {request.user}")
+#         logout(request)
+#         return redirect('home')
+#     else:
+#         logger.info("Non-POST request received for logout.")
+#         return redirect('home')
 
-# def userlogout(request):
-#     logout(request)
-#     messages.sucess(request, "You have been logged out.")
-#     return redirect('home')
+def userlogout(request):
+    logout(request)
+    messages.sucess(request, "You have been logged out.")
+    return redirect('home')
 
 
 
