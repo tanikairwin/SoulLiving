@@ -2,7 +2,7 @@
 from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View, TemplateView
 from .forms import SignUpForm, BookingForm, UserChangeForm, CustomUserChangeForm
@@ -12,11 +12,6 @@ from django.contrib import messages
 from django.http import JsonResponse
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
-import logging
-
-
-logger = logging.getLogger(__name__)
-
 
 
 # User Registration, Login and Profile views
