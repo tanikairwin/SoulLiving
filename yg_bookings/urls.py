@@ -9,7 +9,7 @@ from .views import (
     # SignUp, 
     LoginView, 
     # BookingJSONView,
-    ProfileView
+    ProfileView,
 )
 
 urlpatterns = [
