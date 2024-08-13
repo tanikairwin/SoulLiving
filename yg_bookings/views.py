@@ -52,7 +52,7 @@ class ProfileView(TemplateView):
 
 
 class CustomLoginView(LoginView):
-    template_name = 'registration/login.html'
+    template_name = 'registration /login.html'
     """
         Custom login view to display login form with success message.
     """
@@ -61,7 +61,10 @@ class CustomLoginView(LoginView):
         messages.success(self.request, 'You have successfully logged in.')
         return response
 
-
+def userlogout(request):
+    logout(request)
+    messages.sucess(request, "You have been logged out.")
+    return redirect('home')
 
 
 
