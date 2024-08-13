@@ -31,8 +31,7 @@ def register_user(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            messages.success(request, "You Have Successfully Registered! Welcome!")
-            return redirect('register/login.html')
+            return redirect('successreg.html')
     else:
         form = SignUpForm()
         return render(request, 'home/register.html', {'form':form})
@@ -40,8 +39,8 @@ def register_user(request):
     return render(request, 'home/register.html', {'form':form})
 
 
-# def registration_success_view(request):
-#     return render(request, 'yg_bookings/success.html')
+def registration_success_view(request):
+    return render(request, 'yg_bookings/success.html')
 
 
 @method_decorator(login_required, name='dispatch')
@@ -71,7 +70,7 @@ class UpdateAccountView(UpdateView):
         return self.request.user
 
 class LoginView(LoginView):
-    template_name = 'yg_bookings/login.html'
+    template_name = 'registration/login.html'
     """
         Custom login view to redirect to profile page with success message.
     """
