@@ -42,15 +42,6 @@ def register_user(request):
     return render(request, 'home/register.html', {'form':form})
 
 
-
-@method_decorator(login_required, name='dispatch')
-class ProfileView(TemplateView):
-    """
-    Displays the account profile after a user logs in.
-    """
-    template_name = 'yg_bookings/accountpage.html'
-
-
 class CustomLoginView(LoginView):
     template_name = 'registration /login.html'
     """
