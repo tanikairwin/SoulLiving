@@ -9,7 +9,6 @@ from .forms import SignUpForm, BookingForm, UserChangeForm, CustomUserChangeForm
 from .models import Sessions, Booking, CustomUser
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import JsonResponse
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
 
@@ -32,7 +31,8 @@ def register_user(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('registration_success')
+            messages.success(request, "You Have Successfully Registered! Welcome!")
+            return redirect('home')
     else:
         form = SignUpForm()
 
@@ -68,7 +68,6 @@ class CustomLoginView(LoginView):
 
     def get_success_url(self):
         return reverse('profile')
-        logger.debug(f"Redirecting to: {url}")
         return url
 
 
