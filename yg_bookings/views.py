@@ -70,8 +70,7 @@ class CustomLoginView(LoginView):
             context['user_info'] = {
                 'username': self.request.user.username,
                 'email': self.request.user.email,
-                'first_name': self.request.user.first_name,
-                'last_name': self.request.user.last_name,
+                'full_name': self.request.user.first_name,
             }
         return context
 
