@@ -21,11 +21,6 @@ class HomePage(TemplateView):
     template_name = 'yg_bookings/index.html'
 
 
-# class SignUp(CreateView):
-#     template_name='yg_bookings/registration.html'
-#     """ 
-#     This view handles user registration using the CustomUserCreationForm.
-#     """
 def register_user(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -37,7 +32,7 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "You Have Successfully Registered! Welcome!")
-            return redirect('yg_bookings/accountpage.html')
+            return redirect('registration/login.html')
     else:
         form = SignUpForm()
         return render(request, 'home/register.html', {'form':form})
@@ -45,20 +40,6 @@ def register_user(request):
     return render(request, 'home/register.html', {'form':form})
 
 
-
-# class SignUpView(CreateView):
-#     """ 
-#     This view handles user registration using the CustomUserCreationForm.
-#     """
-#     form_class = CustomUserCreationForm
-#     success_url = reverse_lazy('login')
-#     template_name = 'yg_bookings/index.html'
-
-#     def form_valid(self, form):
-#         user = form.save()
-#         login(self.request, user)
-#         messages.success(self.request, 'You have successfully registered.')
-#         return redirect('accountpage')
 
 @method_decorator(login_required, name='dispatch')
 class ProfileView(TemplateView):
@@ -97,7 +78,7 @@ class LoginView(LoginView):
         return response
 
     def get_success_url(self):
-        return reverse('accountpage')
+        return reverse('yg_bookings/accountpage.html')
 
 # @method_decorator(login_required, name='dispatch')
 # class UserProfilePage(TemplateView):
