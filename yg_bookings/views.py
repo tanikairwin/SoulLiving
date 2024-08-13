@@ -40,7 +40,7 @@ def register_user(request):
             return redirect('accountpage')
     else:
         form = SignUpForm()
-        return render(request, 'home/register.html')
+        return render(request, 'home/register.html', {'form':form})
 
     return render(request, 'home/register.html', {'form':form})
 
