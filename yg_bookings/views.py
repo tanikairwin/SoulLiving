@@ -19,31 +19,39 @@ class HomePage(TemplateView):
     """
     template_name = 'yg_bookings/index.html'
 
-    def get(self, request, *args, **kwargs):
-        form = CustomUserCreationForm()
-        return self.render_to_response({'form': form})
+    
+    def register_user(request):
+        if request.method == 'POST':
+            form = SignUpForm(request.POST)
+            if form.is_valid():
+                form.save()
+                # Authenticate and login
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password1']
+                user = authenticate(username=username, password=password)
+                login(request, user)
+                messages.success(request, "You Have Successfully Registered! Welcome!")
+                return redirect('accountpage')
+        else:
+            form = SignUpForm()
+            return render(request, 'index.html', {'form':form})
+return render(request, 'index.html', {'form':form})
 
-    def post(self, request, *args, **kwargs):
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('bookings')
-        return self.render_to_response({'form': form})
 
-class SignUpView(CreateView):
-    """ 
-    This view handles user registration using the CustomUserCreationForm.
-    """
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'yg_bookings/index.html'
 
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        messages.success(self.request, 'You have successfully registered.')
-        return redirect('accountpage')
+# class SignUpView(CreateView):
+#     """ 
+#     This view handles user registration using the CustomUserCreationForm.
+#     """
+#     form_class = CustomUserCreationForm
+#     success_url = reverse_lazy('login')
+#     template_name = 'yg_bookings/index.html'
+
+#     def form_valid(self, form):
+#         user = form.save()
+#         login(self.request, user)
+#         messages.success(self.request, 'You have successfully registered.')
+#         return redirect('accountpage')
 
 @method_decorator(login_required, name='dispatch')
 class ProfileView(TemplateView):
