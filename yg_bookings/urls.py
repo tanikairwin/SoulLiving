@@ -12,7 +12,7 @@ from .views import (
 urlpatterns = [
     path('', HomePage.as_view(), name='home'),
     path('register/', views.register_user, name='register'),
-    path('register/success/', views.registration_success_view, name='registration_success'),
+    path('register/successreg/', views.registration_success_view, name='registration_success'),
     # path('signup/', SignUpView.as_view(), name='signup'),
     # path('useraccount/', BookingListView.as_view(), name='booking_list'),
     # path('bookings/', BookingView.as_view(), name='bookings'),
@@ -20,7 +20,7 @@ urlpatterns = [
     # path('confirm-booking/<int:session_id>/', BookingConfirm.as_view(), name='confirm_booking'),
     path('login/', LoginView.as_view(), name='login'),
     # path('logout/', LogoutView.as_view(), name='logout'),
-    path('accountpage/', ProfileView.as_view(), name='profile'),
+    path('login/accountpage/', ProfileView.as_view(), name='profile'),
     # path('bookings/json/', BookingJSONView.as_view(), name='booking_json'),
 ]
 
