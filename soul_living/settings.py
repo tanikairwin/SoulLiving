@@ -129,7 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'yg_bookings.CustomUser'
 
 
-LOGIN_REDIRECT_URL = 'profile'  # Default redirect after login
+
 
 
 # Configure allauth settings
@@ -137,7 +137,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'profile'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
