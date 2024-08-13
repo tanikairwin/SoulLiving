@@ -29,7 +29,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-tanikair-soulliving-d7cjqu320sp.ws.codeinstitute-ide.net','.herokuapp.com',]
 CSRF_TRUSTED_ORIGINS = ['https://codeinstitute-ide.net','https://herokuapp.com',]
@@ -127,6 +127,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 #Tells django to use CustomUser model instead of default one that comes with django
 AUTH_USER_MODEL = 'yg_bookings.CustomUser'
+
+
+LOGIN_REDIRECT_URL = 'profile'  # Default redirect after login
+
 
 # Configure allauth settings
 ACCOUNT_EMAIL_REQUIRED = True

@@ -12,6 +12,12 @@ from django.contrib import messages
 from django.http import JsonResponse
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
+import logging
+
+
+logger = logging.getLogger(__name__)
+
+
 
 # User Registration, Login and Profile views
 class HomePage(TemplateView):
@@ -67,6 +73,8 @@ class CustomLoginView(LoginView):
 
     def get_success_url(self):
         return reverse('profile')
+        logger.debug(f"Redirecting to: {url}")
+        return url
 
 
 
