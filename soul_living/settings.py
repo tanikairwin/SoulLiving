@@ -29,7 +29,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-tanikair-soulliving-d7cjqu320sp.ws.codeinstitute-ide.net','.herokuapp.com',]
 CSRF_TRUSTED_ORIGINS = ['https://codeinstitute-ide.net','https://herokuapp.com',]
