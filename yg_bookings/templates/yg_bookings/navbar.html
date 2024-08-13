@@ -1,0 +1,43 @@
+
+
+<!--Nav bar-->
+<nav class="container-fluid navbar navbar-expand-sm" style="margin: 0;">
+    <div class="navbar-brand">
+        <a href="{% url 'home' %}">
+        <img src="/static/assets/images/soullivinglogo.png" style="margin: 8px 0px 8px 0px;" class="rounded-circle" alt="Soul Living Logo" width="80px" height="80px">
+        </a>
+        <a class="nav-title h1" href="{% url 'home' %}"><strong>Soul Living</strong></a>
+    </div>
+    
+     <!-- Toggle navigation for smaller devices -->
+    <button class="profile-button btn rounded-circle" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span>
+            <img src="/static/assets/images/blankprofile.jpeg" class="profile-img rounded-circle">
+        </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-links navbar-nav w-100 mx-auto d-flex row justify-content-center">
+
+            {% if user.is_authenticated %}
+            <li class="active nav-item mx-auto">
+                <a class="nav-link" href="{% url 'register' %}" style="color: #67996e;">Register</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link" href="{% url 'home' %}" style="color: #67996e;">Logout</a>
+            </li> 
+            
+            {% else %}
+
+            <li class="active nav-item mx-auto">
+                <a class="nav-link" href="{% url 'register' %}" style="color: #67996e;">Register</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link" href="{% url 'login' %}" style="color: #67996e;">Login</a>
+            </li> 
+
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>  
