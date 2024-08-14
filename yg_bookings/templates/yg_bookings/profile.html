@@ -1,0 +1,21 @@
+
+{% extends 'yg_bookings/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Profile</h1>
+    <p><strong>Username:</strong> {{ user_info.username }}</p>
+    <p><strong>Email:</strong> {{ user_info.email }}</p>
+    <p><strong>Full Name:</strong> {{ user_info.full_name }}</p>
+    <p><strong>Age:</strong> {{ user_info.age }}</p>
+
+    <h2>Update Your Information</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ update_form.as_p }}
+        <button type="submit" class="btn btn-secondary">Update Information</button>
+    </form>
+</div>
+
+{% endblock %}
