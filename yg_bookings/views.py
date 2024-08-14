@@ -42,6 +42,24 @@ def register_user(request):
     return render(request, 'home/register.html', {'form':form})
 
 
+@login_required
+def profile_view(request):
+    """ 
+    Displays users information once logged in
+    """
+    context = {
+        'user_info': {
+            'username': request.user.username,
+            'email': request.user.email,
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+            'full_name': getattr(request.user, 'full_name', 'N/A'),
+            'age': getattr(request.user, 'age', 'N/A'),
+        },
+        'update_form': form,
+    }
+    return render(request, 'profile.html', context)
+
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
     success_url = reverse_lazy('registration/login.html')
