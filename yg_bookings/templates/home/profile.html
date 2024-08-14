@@ -15,29 +15,33 @@
                     <p><strong>Age:</strong> {{ user_info.age }}</p>
                 </div>
             </div>
-
-            <h2 class="text-center mt-4">Update Your Information</h2>
-            <form method="POST" action="">
-                {% csrf_token %}
-                {% if update_form.errors %}
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        Your Form Has Errors
-                        {% for field in update_form %}
-                            {% if field.errors %}
-                                {{ field.errors }}
-                            {% endif %}
-                        {% endfor %}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endif %}
-                {{ update_form.as_p }}
-                <div class="text-center">
-                    <button type="submit" class="btn btn-success">Update Information</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>
+<div>
+    <h2 class="text-center mt-4">Update Your Information</h2>
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {% if update_form.errors %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Your Form Has Errors
+                {% for field in update_form %}
+                    {% if field.errors %}
+                        {{ field.errors }}
+                    {% endif %}
+                {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            {{ update_form.as_p }}
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Update Information</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 {% endblock %}
 
