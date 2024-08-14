@@ -27,7 +27,7 @@
                         {% if ProfileUpdateForm.errors %}
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 Your Form Has Errors
-                                {% for field in update_form %}
+                                {% for field in ProfileUpdateForm %}
                                     {% if field.errors %}
                                         {{ field.errors }}
                                     {% endif %}
