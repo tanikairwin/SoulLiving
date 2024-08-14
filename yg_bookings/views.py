@@ -45,31 +45,23 @@ def register_user(request):
 @method_decorator(login_required, name='dispatch')
 class ProfileView(TemplateView):
     template_name = 'home/profile.html'
+    model = CustomUser
+    form_class = ProfileUpdateForm
+    success_url = reverse_lazy('profile')
 
-    def get_context_data(self, **kwargs):
-        # Get the default context data
-        context = super().get_context_data(**kwargs)
-        # Add user information to context
-        context['user_info'] = {
-            'username': self.request.user.username,
-            'email': self.request.user.email,
-            'full_name': getattr(self.request.user, 'full_name', 'N/A'),
-            'age': getattr(self.request.user, 'age', 'N/A'),
-        }
-        context['form'] = ProfileUpdateForm(instance=self.request.user)
-        return context
+    def get_object(self):
+            # Ensure only the logged-in user can update their profile
+            return self.request.user
 
-    def post(self, request, *args, **kwargs):
-        form = ProfileUpdateForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your profile has been updated.')
-            return redirect('profile')
-        else:
-            messages.error(request, 'Please correct the error below.')
-            context = self.get_context_data()
-            context['ProfileUpdateForm'] = form
-            return render(request, self.template_name, context)
+    def form_valid(self, form):
+        # Save the updated user data
+        messages.success(self.request, 'Your profile has been updated.')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        # Handle form errors
+        messages.error(self.request, 'Please correct the error below.')
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 
