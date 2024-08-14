@@ -51,18 +51,15 @@ def profile_view(request):
         'user_info': {
             'username': request.user.username,
             'email': request.user.email,
-            'first_name': request.user.first_name,
-            'last_name': request.user.last_name,
             'full_name': getattr(request.user, 'full_name', 'N/A'),
             'age': getattr(request.user, 'age', 'N/A'),
         },
-        'update_form': form,
     }
-    return render(request, 'profile.html', context)
+    return render(request, 'yg_bookings/profile.html', context)
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('yg_bookings/profile.html')
     """
         Custom login view to display login form with success message.
     """
