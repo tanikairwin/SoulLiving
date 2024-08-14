@@ -62,7 +62,7 @@ def profile_view(request):
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
-    success_url = reverse_lazy('registration/login.html')
+    success_url = reverse_lazy('profile')
     """
         Custom login view to display login form with success message.
     """
@@ -76,23 +76,12 @@ class CustomLoginView(LoginView):
             if user is not None:
                 login(request, user)
                 messages.success(request, "You are now logged in.")
-                return redirect('login')
+                return redirect('profile')
             else:
                 messages.success(request, "There was an error logging in, Please try again.")
                 return redirect('login')
         else:
             return render(request, 'login')
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        patch_no_cache(response)
-        if self.request.user.is_authenticated:
-            context['user_info'] = {
-                'username': self.request.user.username,
-                'email': self.request.user.email,
-                'full_name': self.request.user.first_name,
-            }
-        return context
 
 
 def userlogout(request):
