@@ -22,7 +22,7 @@ class Sessions(models.Model):
     title = models.CharField(max_length=100, default="Default Session Title")
     type = models.CharField(max_length=100)
     description = models.TextField()
-    date = models.DateField()
+    date = models.DateField(blank=True, default='', null=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     duration = models.DurationField()
