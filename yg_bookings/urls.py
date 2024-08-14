@@ -12,7 +12,7 @@ urlpatterns = [
     path('register/', views.register_user, name='register'),
     path('accounts/login/', CustomLoginView.as_view(), name='login'),
     path('accounts/logout/', LogoutView.as_view(next_page='home'), name='logout'),
-    path('profile/', ProfileView.as_view(), name='profile'),
+    path('login/profile/', ProfileView.as_view(), name='profile'),
 ]
 
 

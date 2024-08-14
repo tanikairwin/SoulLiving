@@ -35,7 +35,7 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "You are now registered to Soul Living, Welcome!")
-            return redirect('home/profile.html')
+            return redirect('profile')
     else:
         form = SignUpForm()
 
@@ -44,7 +44,7 @@ def register_user(request):
 
 @method_decorator(login_required, name='dispatch')
 class ProfileView(TemplateView):
-    template_name = 'home/profile.html'
+    template_name = 'profile'
 
     def get_context_data(self, **kwargs):
         # Get the default context data
