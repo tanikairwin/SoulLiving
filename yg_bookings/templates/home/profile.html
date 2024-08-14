@@ -13,6 +13,37 @@
         </div>
       </div>
     </div>
+
+     <!-- Booking table -->
+     <table id="view-booking-table" class="table">
+      <thead>
+          <tr>
+              <th>User</th>
+              <th>Title</th>
+              <th>Start Time</th>
+              <th>Duration</th>
+          </tr>
+      </thead>
+      {% for booking in bookings %}
+      <tbody>
+          <tr class="booking-row">
+              <!--if superuser or staff user show all booking fields -->
+              {% if request.user.is_superuser or request.user.is_staff %}
+              <td>{{ booking.user }}</td>
+              {% else %}
+              <!-- if standard user is authenticated show their username but anonymize other usernames names -->
+              {% if booking.user == request.user %}
+              <td>{{ booking.user }}</td>
+              {% else %}
+              <td>*****</td>
+              {% endif %}
+              {% endif %}
+              <!-- always show these fields -->
+              <td>{{ session.title }}</td>
+              <td>{{ session.start_time }}</td>
+              <td>{{ session.duration }}</td>
+              
+
     <!-- <div class="col">
       <div class="card">
         <div class="card-body">
@@ -49,7 +80,7 @@
         </div>
       </div>
     </div> -->
-    <div class="col">
+    <!-- <div class="col">
       <div class="card">
         <div class="card-body">
           <h3 class="card-title text-center">Card title</h3>
@@ -65,7 +96,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 {% endblock %}
 

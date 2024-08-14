@@ -89,6 +89,18 @@ def userlogout(request):
 
 # Booking and CRUD 
 
+def view_booking(request):
+    """
+    View bookings made by user on profile page
+    """
+    today_date = datetime.now()
+    bookings = Sessions.objects.filter(date__gte=today_date)
+    context = {
+        'sessions': bookings
+    }
+    return render(request, 'home/profile.html', context)
+
+
 # @method_decorator(login_required, name='dispatch')
 # class BookingConfirm(View):
 #     """
@@ -110,8 +122,8 @@ def userlogout(request):
 #     """ 
 #     This view lists all bookings made by the logged-in user.
 #     """
-#     model = Booking
-#     template_name = 'yg_bookings/bookings.html'
+#     model = 
+#     template_name = 'home/profile.html'
 
 #     def get_queryset(self):
 #         return Booking.objects.filter(user=self.request.user)
