@@ -27,7 +27,7 @@
 <body>
     {% include 'yg_bookings/navbar.html' %}
 
-        <main class="flex-shrink-0 main-bg">
+        <main>
             {% if messages %}
             {% for message in messages %}
               <div class="alert alert-success">
@@ -39,9 +39,14 @@
             {% endif %}
 
             {% block content %}
+              <!-- Content Goes here -->
             {% endblock%} 
-            <!-- Content Goes here -->
+            
            
+
+
+
+
     
         </main>
 
