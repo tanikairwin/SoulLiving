@@ -1,32 +1,68 @@
 {% extends 'yg_bookings/base.html' %}
 {% block content %}
 
-<div class="col-md-6 offset-md-3">
-<h1>Register</h1>
-<br/>
-
-<form method="POST" action="">
-	{% csrf_token %}
-	{% if form.errors %}
-			<div class="alert alert-warning alert-dismissible fade show" role="alert">
-			  Your Form Has Errors
-			  {% for field in form %}
-			  	{% if field.errors %}
-			  		{{ field.errors }}
-			  	{% endif %}
-			  {% endfor %}
-			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-		{% endif %}
-
-	{{ form.as_p }}
-
-	<br/>
-	  <button type="submit" class="btn btn-secondary">Register</button>
-	</form>
-
-
-
+<!-- Background image with title and book now button -->
+<div class="jumbotron-fluid callout-container" style="height: 800px;">
+  <div class="opaque-overlay"></div>
+  <div class="col-9" style="height: 550px;">
+    <div class="col-12">
+      <!-- Callout style introduction to page with title and brief text -->
+      <section class="callout jumbotron text-center" style="background-color: #f1fcf1; margin-bottom: 0px; padding: 10px;">
+        <h2 class="jumbotron-header">Register</h2>
+        <form class="row-cols-md-2" method="POST" action="{% url 'register' %}">
+          {% csrf_token %}
+          {% if form.errors %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              Your Form Has Errors
+              {% for field in form %}
+                {% if field.errors %}
+                  {{ field.errors }}
+                {% endif %}
+              {% endfor %}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endif %}
+          
+          <div class="form-group">
+            {{ form.full_name.label_tag }}
+            {{ form.full_name }}
+            {% if form.full_name.help_text %}
+              <small class="form-text text-muted">{{ form.full_name.help_text }}</small>
+            {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {% if form.email.help_text %}
+              <small class="form-text text-muted">{{ form.email.help_text }}</small>
+            {% endif %}
+		  </div>
+		  <div class="form-group">
+			{{ form.username.label_tag }}
+            {{ form.username }}
+            {% if form.username.help_text %}
+              <small class="form-text text-muted">{{ form.username.help_text }}</small>
+            {% endif %}
+          </div>
+          <div class="form-group">
+			{{ form.password1.label_tag }}
+            {{ form.password1 }}
+            {% if form.password1.help_text %}
+              <small class="form-text text-muted">{{ form.password1.help_text }}</small>
+            {% endif %}
+          </div>
+          <div class="form-group">
+			{{ form.password2.label_tag }}
+            {{ form.password2 }}
+            {% if form.password2.help_text %}
+            <small class="form-text text-muted">{{ form.password2.help_text }}</small>
+            {% endif %}
+          </div>
+          <button type="submit" class="btn btn-success">Register</button>
+        </form>
+      </section>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

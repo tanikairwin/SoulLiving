@@ -52,6 +52,7 @@ body {
 /* Callout section styles */
 .jumbrotron {
     background-color: #c5facb;
+    height: 400px;
 }
 p {
     font-size: larger;

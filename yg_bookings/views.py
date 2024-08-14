@@ -56,7 +56,18 @@ class ProfileView(TemplateView):
             'full_name': getattr(self.request.user, 'full_name', 'N/A'),
             'age': getattr(self.request.user, 'age', 'N/A'),
         }
+        context['form'] = ProfileUpdateForm(instance=self.request.user)
         return context
+
+    def post(self, request, *args, **kwargs):
+        form = ProfileUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile has been updated.')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+            return self.get(request, *args, **kwargs)
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'

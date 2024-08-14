@@ -2,16 +2,28 @@
 {% extends 'yg_bookings/base.html' %}
 
 {% block content %}
-
-<div class="container">
-    <h1>Login</h1>
-    <br/>
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <br/>
-        <button type="submit" class="btn btn-secondary">Login</button>
-    </form>
+  <!-- Background image with title and book now button -->
+  <div class="jumbotron-fluid callout-container" style="height: 427px;">
+    <div class="opaque-overlay"></div>
+    <div class="row">
+        <div class="col-12">
+            <!-- Callout style introduction to page with title and brief text -->
+            <section class="callout jumbotron text-center" style="background-color: #f1fcf1; margin-bottom: 0px; padding: 10px;">
+                <h2 class="jumbotron-header">Login</h2>
+                <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <br/>
+                    <button type="submit" class="btn btn-success">Login</button>
+                </form>
+            </section>
+        </div>
+    </div>
 </div>
+
+        
+       
+ 
+
 
 {% endblock %}
