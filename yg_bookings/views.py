@@ -63,8 +63,6 @@ class ProfileView(TemplateView):
         messages.error(self.request, 'Please correct the error below.')
         return self.render_to_response(self.get_context_data(form=form))
 
-
-
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
     success_url = reverse_lazy('home')

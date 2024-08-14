@@ -41,6 +41,11 @@ class ProfileUpdateForm(forms.ModelForm):
         model = CustomUser
         fields = ['username', 'email', 'full_name', 'age']
 
+    def __init__(self, *args, **kwargs):
+        super(ProfileUpdateForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({'class': 'form-control'})
+
 
 
 
