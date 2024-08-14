@@ -36,15 +36,15 @@ class SignUpForm(UserCreationForm):
 		self.fields['password2'].help_text = 'Enter the same password as before, for verification.'	
 
 
-class ProfileUpdateForm(forms.ModelForm):
-    class Meta:
-        model = CustomUser
-        fields = ['username', 'email', 'full_name', 'age']
+# class ProfileUpdateForm(forms.ModelForm):
+#     class Meta:
+#         model = CustomUser
+#         fields = ['username', 'email', 'full_name', 'age']
 
-    def __init__(self, *args, **kwargs):
-        super(ProfileUpdateForm, self).__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs.update({'class': 'form-control'})
+#     def __init__(self, *args, **kwargs):
+#         super(ProfileUpdateForm, self).__init__(*args, **kwargs)
+#         for field in self.fields.values():
+#             field.widget.attrs.update({'class': 'form-control'})
 
 
 

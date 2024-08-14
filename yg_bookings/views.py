@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView, LoginView
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View, TemplateView
-from .forms import SignUpForm, BookingForm, ProfileUpdateForm
+from .forms import SignUpForm, BookingForm
 from .models import Sessions, Booking, CustomUser
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -46,22 +46,21 @@ def register_user(request):
 class ProfileView(TemplateView):
     template_name = 'home/profile.html'
     model = CustomUser
-    form_class = ProfileUpdateForm
     success_url = reverse_lazy('profile')
 
-    def get_object(self):
-            # Ensure only the logged-in user can update their profile
-            return self.request.user
+    # def get_object(self):
+    #         # Ensure only the logged-in user can update their profile
+    #         return self.request.user
 
-    def form_valid(self, form):
-        # Save the updated user data
-        messages.success(self.request, 'Your profile has been updated.')
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     # Save the updated user data
+    #     messages.success(self.request, 'Your profile has been updated.')
+    #     return super().form_valid(form)
 
-    def form_invalid(self, form):
-        # Handle form errors
-        messages.error(self.request, 'Please correct the error below.')
-        return self.render_to_response(self.get_context_data(form=form))
+    # def form_invalid(self, form):
+    #     # Handle form errors
+    #     messages.error(self.request, 'Please correct the error below.')
+    #     return self.render_to_response(self.get_context_data(form=form))
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
