@@ -35,7 +35,7 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "You are now registered to Soul Living, Welcome!")
-            return redirect('home')
+            return redirect('profile')
     else:
         form = SignUpForm()
 
@@ -59,26 +59,18 @@ def profile_view(request):
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
-    success_url = reverse_lazy('yg_bookings/profile.html')
+    success_url = reverse_lazy('profile')
     """
         Custom login view to display login form with success message.
     """
-    def login_request(request):
-        if request.method == 'POST':
-            username = request.POST['username']
-            password = request.POST['password']
-            # Authenticate
-            user = authenticate(request, username=username, password=password)
-            patch_no_cache(response)
-            if user is not None:
-                login(request, user)
-                messages.success(request, "You are now logged in.")
-                return redirect('profile')
-            else:
-                messages.success(request, "There was an error logging in, Please try again.")
-                return redirect('login')
-        else:
-            return render(request, 'login')
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "You are now logged in.")
+        return response
+
+    def form_invalid(self, form):
+        messages.error(self.request, "There was an error logging in. Please try again.")
+        return super().form_invalid(form)
 
 
 def userlogout(request):
