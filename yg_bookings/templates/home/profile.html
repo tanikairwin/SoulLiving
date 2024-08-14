@@ -5,7 +5,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="text-center mb-4">Profile</h1>
+            <h1 class="text-center">Profile</h1>
             
             <!-- Profile Information Card -->
             <div class="card mb-4">
@@ -18,12 +18,13 @@
             </div>
             
             <!-- Update Information Section -->
-            <h2 class="text-center mb-4">Update Your Information</h2>
-            <div class="card">
+            <h2 class="text-center ">Update Your Information</h2>
+
+            <div class="card mb-4">
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{% url 'profile' %}">
                         {% csrf_token %}
-                        {% if update_form.errors %}
+                        {% if ProfileUpdateForm.errors %}
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 Your Form Has Errors
                                 {% for field in update_form %}
@@ -34,7 +35,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         {% endif %}
-                        {{ update_form.as_p }}
+                        {{ ProfileUpdateForm.as_p }}
                         <div class="text-center mt-3">
                             <button type="submit" class="btn btn-success">Update Information</button>
                         </div>
