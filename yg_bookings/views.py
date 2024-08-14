@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView, LoginView
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View, TemplateView
-from .forms import SignUpForm, BookingForm
+from .forms import SignUpForm, BookingForm, ProfileUpdateForm
 from .models import Sessions, Booking, CustomUser
 from django.shortcuts import render, redirect
 from django.contrib import messages
