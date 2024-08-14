@@ -1,13 +1,14 @@
-
 {% extends 'yg_bookings/base.html' %}
 
 {% block content %}
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-12">
             <h1 class="text-center mb-4">Profile</h1>
-            <div class="card">
+            
+            <!-- Profile Information Card -->
+            <div class="card mb-4">
                 <div class="card-body">
                     <p><strong>Username:</strong> {{ user_info.username }}</p>
                     <p><strong>Email:</strong> {{ user_info.email }}</p>
@@ -15,33 +16,34 @@
                     <p><strong>Age:</strong> {{ user_info.age }}</p>
                 </div>
             </div>
+            
+            <!-- Update Information Section -->
+            <h2 class="text-center mb-4">Update Your Information</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        {% if update_form.errors %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                Your Form Has Errors
+                                {% for field in update_form %}
+                                    {% if field.errors %}
+                                        {{ field.errors }}
+                                    {% endif %}
+                                {% endfor %}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endif %}
+                        {{ update_form.as_p }}
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-success">Update Information</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div>
-    <h2 class="text-center mt-4">Update Your Information</h2>
-    <div>
-        <form method="POST" action="">
-            {% csrf_token %}
-            {% if update_form.errors %}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                Your Form Has Errors
-                {% for field in update_form %}
-                    {% if field.errors %}
-                        {{ field.errors }}
-                    {% endif %}
-                {% endfor %}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            {% endif %}
-            {{ update_form.as_p }}
-            <div class="text-center">
-                <button type="submit" class="btn btn-success">Update Information</button>
-            </div>
-        </form>
-    </div>
-</div>
-
 
 {% endblock %}
 
