@@ -62,6 +62,14 @@ Many women struggle to find holistic services that are easy to book and have reg
 - Change account information (e.g username, email, fullname)
 - Confirmation feature before booking
 
+## Main Technologies
+
+- HTML
+- CSS
+- JavaScript
+- Python+Django
+- Postgres
+
 ## Testing 
 
 Sufficient testing has been done manually and through validators. 
