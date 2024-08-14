@@ -42,24 +42,25 @@ def register_user(request):
     return render(request, 'home/register.html', {'form':form})
 
 
-@login_required
-def profile_view(request):
-    """ 
-    Displays users information once logged in
-    """
-    context = {
-        'user_info': {
-            'username': request.user.username,
-            'email': request.user.email,
-            'full_name': getattr(request.user, 'full_name', 'N/A'),
-            'age': getattr(request.user, 'age', 'N/A'),
-        },
-    }
-    return render(request, 'yg_bookings/profile.html', context)
+@method_decorator(login_required, name='dispatch')
+class ProfileView(TemplateView):
+    template_name = 'home/profile.html'
+
+    def get_context_data(self, **kwargs):
+        # Get the default context data
+        context = super().get_context_data(**kwargs)
+        # Add user information to context
+        context['user_info'] = {
+            'username': self.request.user.username,
+            'email': self.request.user.email,
+            'full_name': getattr(self.request.user, 'full_name', 'N/A'),
+            'age': getattr(self.request.user, 'age', 'N/A'),
+        }
+        return context
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
-    success_url = reverse_lazy('home/profile.html')
+    success_url = reverse_lazy('profile')
     """
         Custom login view to display login form with success message.
     """
