@@ -1,6 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.db import models
+from django.utils import timezone
+
+def get_current_date():
+    return timezone.now().date()
 
 # Create your models here.
 class CustomUser(AbstractUser):
@@ -18,6 +22,7 @@ class Sessions(models.Model):
     title = models.CharField(max_length=100, default="Default Session Title")
     type = models.CharField(max_length=100)
     description = models.TextField()
+    date = models.DateField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     duration = models.DurationField()

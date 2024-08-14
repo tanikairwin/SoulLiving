@@ -64,18 +64,16 @@ class BookingView(TemplateView):
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
-    success_url = reverse_lazy('bookings')
+    success_url = reverse_lazy('home')
     """
         Custom login view to display login form with success message.
     """
     def form_valid(self, form):
-        print("Form is valid. Redirecting to profile.")
         response = super().form_valid(form)
         messages.success(self.request, "You are now logged in.")
         return response
 
     def form_invalid(self, form):
-        print("Form is invalid. Redirecting to login.")
         messages.error(self.request, "There was an error logging in. Please try again.")
         return super().form_invalid(form)
 
