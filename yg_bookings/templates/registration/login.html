@@ -4,26 +4,14 @@
 {% block content %}
 
 <div class="container">
-    {% if user.is_authenticated %}
-        <h1>Welcome, {{ user_info.username }}!</h1>
-        <p>This is your profile page.</p>
-        <p>Email: {{ user_info.email }}</p>
-        <p>First Name: {{ user_info.first_name }}</p>
-        <p>Last Name: {{ user_info.last_name }}</p>
-
-    {% else %}
-
-        <h1>Login</h1>
+    <h1>Login</h1>
+    <br/>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
         <br/>
-        <form method="POST" action="">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <br/>
-            <button type="submit" class="btn btn-secondary">Login</button>
-        </form>
-
-    {% endif %}
-
+        <button type="submit" class="btn btn-secondary">Login</button>
+    </form>
 </div>
 
 {% endblock %}
