@@ -35,7 +35,7 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "You are now registered to Soul Living, Welcome!")
-            return redirect('profile')
+            return redirect('home/profile.html')
     else:
         form = SignUpForm()
 
@@ -59,7 +59,7 @@ def profile_view(request):
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('home/profile.html')
     """
         Custom login view to display login form with success message.
     """
