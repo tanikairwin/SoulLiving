@@ -26,7 +26,7 @@ Many women struggle to find holistic services that are easy to book and have reg
 
 - __Sessions Information__
 
-  -  
+  -  This section of the home page allows users to clearly understand exactly what the site and brand offers. Allows users to decide if the site is of use to them.
 
 ![Sessions Information Section](media/about_us.png)
 
@@ -64,7 +64,10 @@ Many women struggle to find holistic services that are easy to book and have reg
 
 ## Testing 
 
-Sufficient testing has been 
+Sufficient testing has been done manually and through validators. 
+
+- Buttons and links work correctly apat from the callout register now button on the home page which doesnt do any action related to its content.
+- The booking table in My Bookings doesnt edit or cancel bookings so not working as it should.
 
 
 ### Validator Testing 
@@ -74,15 +77,16 @@ Sufficient testing has been
 - CSS
   - No errors were found when passing through the official [W3 Jigsaw validator](http://jigsaw.w3.org/css-validator/validator$link)
 
-[W3 Validator](media/W3Validator.png)
-[Jigsaw Validator](media/Jigsaw_Validator.png)
+![W3 Validator](media/W3Validator.png)
+![Jigsaw Validator](media/Jigsaw_Validator.png)
 
 ## Deployment
  
 
 - The site was deployed to Heroku app. 
 
-The live link can be found here - 
+The live link can be found here - https://github.com/users/tanikairwin/projects/1/views/1
+https://yogabookings-adb857a51526.herokuapp.com/home/
 
 
 ## Credits 
@@ -101,4 +105,4 @@ The live link can be found here -
 
 - (https://github.com/StevenWeir038/Kennel39/blob/main/bookings/templates/bookings/view_booking.html)
 - (https://github.com/flatplanet/Django-CRM)
-- [Youtube Link of the video I watched that lead me to the repository above](https://youtu.be/t10QcFx7d5k?si=1gf25plbYqgLbFyc)
+- [Youtube Link of the video I watched that led me to the repository above](https://youtu.be/t10QcFx7d5k?si=1gf25plbYqgLbFyc)
