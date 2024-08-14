@@ -67,7 +67,11 @@ class ProfileView(TemplateView):
             return redirect('profile')
         else:
             messages.error(request, 'Please correct the error below.')
-            return self.get(request, *args, **kwargs)
+            context = self.get_context_data()
+            context['ProfileUpdateForm'] = form
+            return render(request, self.template_name, context)
+
+
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
