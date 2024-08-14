@@ -35,20 +35,6 @@ class SignUpForm(UserCreationForm):
 		self.fields['password2'].label = ''
 		self.fields['password2'].help_text = 'Enter the same password as before, for verification.'	
 
-
-# class ProfileUpdateForm(forms.ModelForm):
-#     class Meta:
-#         model = CustomUser
-#         fields = ['username', 'email', 'full_name', 'age']
-
-#     def __init__(self, *args, **kwargs):
-#         super(ProfileUpdateForm, self).__init__(*args, **kwargs)
-#         for field in self.fields.values():
-#             field.widget.attrs.update({'class': 'form-control'})
-
-
-
-
 class BookingForm(forms.ModelForm):
     """ 
     This form allows users to make a booking by selecting a yoga class.
