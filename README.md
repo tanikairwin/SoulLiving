@@ -85,9 +85,9 @@ Sufficient testing has been done manually and through validators.
 
 - The site was deployed to Heroku app. 
 
-The live link can be found here - https://github.com/users/tanikairwin/projects/1/views/1
-https://yogabookings-adb857a51526.herokuapp.com/home/
-
+The live link can be found here -https://yogabookings-adb857a51526.herokuapp.com/home/
+Github Repo - https://github.com/tanikairwin/SoulLiving 
+Project Board - https://github.com/users/tanikairwin/projects/1/views/1
 
 ## Credits 
 
