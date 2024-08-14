@@ -10,8 +10,6 @@ body {
     background-color: #f1fcf1;
 }
 
-/* Nav bar styles */
-
 .navbar {
     background-color: #c5facb;
     padding: 0 15px 0 15px;
@@ -52,6 +50,7 @@ body {
 /* Callout section styles */
 .jumbrotron {
     background-color: #c5facb;
+    height: 400px;
 }
 p {
     font-size: larger;
@@ -125,7 +124,7 @@ label {
 /* Footer */
 .footer {
     background-color: #caca75;
-    margin: auto;
+    margin-top: auto;
 }
 .footer-img {
     padding: 10px;
