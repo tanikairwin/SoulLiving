@@ -35,7 +35,7 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "You are now registered to Soul Living, Welcome!")
-            return redirect('profile')
+            return redirect('home')
     else:
         form = SignUpForm()
 
@@ -44,7 +44,7 @@ def register_user(request):
 
 @method_decorator(login_required, name='dispatch')
 class ProfileView(TemplateView):
-    template_name = 'profile'
+    template_name = 'home/profile.html'
 
     def get_context_data(self, **kwargs):
         # Get the default context data
@@ -60,7 +60,7 @@ class ProfileView(TemplateView):
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('home')
     """
         Custom login view to display login form with success message.
     """
