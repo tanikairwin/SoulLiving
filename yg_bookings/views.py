@@ -42,9 +42,27 @@ def register_user(request):
     return render(request, 'home/register.html', {'form':form})
 
 
+@login_required
+def profile_view(request):
+    """ 
+    Displays users information once logged in
+    """
+    context = {
+        'user_info': {
+            'username': request.user.username,
+            'email': request.user.email,
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+            'full_name': getattr(request.user, 'full_name', 'N/A'),
+            'age': getattr(request.user, 'age', 'N/A'),
+        },
+        'update_form': form,
+    }
+    return render(request, 'profile.html', context)
+
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
-    success_url = reverse_lazy('registration/login.html')
+    success_url = reverse_lazy('profile')
     """
         Custom login view to display login form with success message.
     """
@@ -58,23 +76,12 @@ class CustomLoginView(LoginView):
             if user is not None:
                 login(request, user)
                 messages.success(request, "You are now logged in.")
-                return redirect('login')
+                return redirect('profile')
             else:
                 messages.success(request, "There was an error logging in, Please try again.")
                 return redirect('login')
         else:
             return render(request, 'login')
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        patch_no_cache(response)
-        if self.request.user.is_authenticated:
-            context['user_info'] = {
-                'username': self.request.user.username,
-                'email': self.request.user.email,
-                'full_name': self.request.user.first_name,
-            }
-        return context
 
 
 def userlogout(request):
