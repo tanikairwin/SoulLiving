@@ -8,16 +8,7 @@
   
 body {
     background-color: #f1fcf1;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
-
-main {
-    flex: 1;
-}
-
-/* Nav bar styles */
 
 .navbar {
     background-color: #c5facb;

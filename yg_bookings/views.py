@@ -48,19 +48,6 @@ class BookingView(TemplateView):
     model = CustomUser
     success_url = reverse_lazy('bookings')
 
-    # def get_object(self):
-    #         # Ensure only the logged-in user can update their profile
-    #         return self.request.user
-
-    # def form_valid(self, form):
-    #     # Save the updated user data
-    #     messages.success(self.request, 'Your profile has been updated.')
-    #     return super().form_valid(form)
-
-    # def form_invalid(self, form):
-    #     # Handle form errors
-    #     messages.error(self.request, 'Please correct the error below.')
-    #     return self.render_to_response(self.get_context_data(form=form))
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
@@ -87,41 +74,13 @@ def userlogout(request):
 
 # Booking and CRUD 
 
-# def view_booking(request):
-#     """
-#     View bookings made by user on profile page
-#     """
-#     today_date = datetime.now()
-#     bookings = Sessions.objects.filter(date__gte=today_date)
-#     context = {
-#         'sessions': bookings
-#     }
-#     return render(request, 'home/profile.html', context)
-
-
-# @method_decorator(login_required, name='dispatch')
-# class BookingConfirm(View):
-#     """
-#     Displays booking confirmation page, requires login
-#     """
-#     def get(self, request, session_id):
-#         session = session.objects.get(id=session_id)
-#         return render(request, 'yg_bookings/confirm_booking.html', {'session': session})
-
-#     @method_decorator(login_required, name='dispatch')
-#     def post(self, request, session_id):
-#         # Handle booking logic here
-#         return redirect('bookings')
-
-
-
-# @method_decorator(login_required, name='dispatch')
-# class BookingListView(ListView):
-#     """ 
-#     This view lists all bookings made by the logged-in user.
-#     """
-#     model = 
-#     template_name = 'home/profile.html'
-
-#     def get_queryset(self):
-#         return Booking.objects.filter(user=self.request.user)
+def view_booking(request):
+    """
+    View bookings made by user on profile page
+    """
+    today_date = datetime.now()
+    bookings = Sessions.objects.filter(date__gte=today_date)
+    context = {
+        'sessions': bookings
+    }
+    return render(request, 'home/profile.html', context)

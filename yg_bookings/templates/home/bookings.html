@@ -1,74 +1,75 @@
 {% extends 'yg_bookings/base.html' %}
 
 {% block content %}
-<div class="container mt-5">
-    <!-- Booking table -->
-    <table id="view-booking-table" class="table table-bordered">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Title</th>
-                <th>Start Time</th>
-                <th>Date</th>
-                <th>Duration</th>
-                <th>Edit</th>
-                <th>Cancel</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for session in Sessions %}
-            <tr class="booking-row">
-                {% if request.user.is_superuser or request.user.is_staff %}
-                <td>{{ session.booked_by.user }}</td>
-                {% else %}
-                {% if session.booked_by.user == request.user %}
-                <td>{{ session.booked_by.user }}</td>
-                {% else %}
-                <td>*****</td>
-                {% endif %}
-                {% endif %}
-                <td>{{ session.title }}</td>
-                <td>{{ session.start_time }}</td>
-                <td>{{ session.date }}</td>
-                <td>{{ session.duration }}</td>
-                <td>
-                    <a href="{% url 'edit_booking' session.id %}">Edit</a>
-                </td>
-                <td>
-                    <a data-bs-toggle="modal" data-bs-target="#modal-cancel-{{ forloop.counter }}">
-                        Cancel
-                    </a>
-                    <!-- Modal cancellation confirmation -->
-                    <div class="modal fade" id="modal-cancel-{{ forloop.counter }}" tabindex="-1"
-                        aria-labelledby="modal-cancel-label-{{ forloop.counter }}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modal-cancel-label-{{ forloop.counter }}">
-                                        Cancel Booking for {{ session.title }}?
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Are you sure you want to cancel the booking for
-                                    <span>{{ session.title }}</span> on {{ session.date }} at
-                                    {{ session.start_time }}?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn" data-bs-dismiss="modal">No</button>
-                                    <button type="button" class="btn"><a
-                                            href="{% url 'cancel_booking' session.id %}">Yes</a></button>
+        <div class="container mt-5">
+            <!-- Booking table -->
+            <table id="view-booking-table" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Title</th>
+                        <th>Start Time</th>
+                        <th>Date</th>
+                        <th>Duration</th>
+                        <th>Edit</th>
+                        <th>Cancel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for session in Sessions %}
+                    <tr class="booking-row">
+                        {% if request.user.is_superuser or request.user.is_staff %}
+                        <td>{{ session.booked_by.user }}</td>
+                        {% else %}
+                        {% if session.booked_by.user == request.user %}
+                        <td>{{ session.booked_by.user }}</td>
+                        {% else %}
+                        <td>*****</td>
+                        {% endif %}
+                        {% endif %}
+                        <td>{{ session.title }}</td>
+                        <td>{{ session.start_time }}</td>
+                        <td>{{ session.date }}</td>
+                        <td>{{ session.duration }}</td>
+                        <td>
+                            <a href="{% url 'edit_booking' session.id %}">Edit</a>
+                        </td>
+                        <td>
+                            <a data-bs-toggle="modal" data-bs-target="#modal-cancel-{{ forloop.counter }}">
+                                Cancel
+                            </a>
+                            <!-- Modal cancellation confirmation -->
+                            <div class="modal fade" id="modal-cancel-{{ forloop.counter }}" tabindex="-1"
+                                aria-labelledby="modal-cancel-label-{{ forloop.counter }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-cancel-label-{{ forloop.counter }}">
+                                                Cancel Booking for {{ session.title }}?
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to cancel the booking for
+                                            <span>{{ session.title }}</span> on {{ session.date }} at
+                                            {{ session.start_time }}?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn" data-bs-dismiss="modal">No</button>
+                                            <button type="button" class="btn"><a
+                                                    href="{% url 'cancel_booking' session.id %}">Yes</a></button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
 {% endblock %}
 
 
