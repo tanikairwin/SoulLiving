@@ -1,18 +1,18 @@
 {% extends 'yg_bookings/base.html' %}
 
 {% block content %}
-<div class="row row-cols-1 row-cols-md-2 g-4">
+<!-- <div class="container">
     <div class="col">
       <div class="card">
         <div class="card-body">
           <h3 class="card-title text-center">Profile</h3>
-          <p><strong>Username:</strong> {{ user_info.username }}</p>
-          <p><strong>Email:</strong> {{ user_info.email }}</p>
-          <p><strong>Full Name:</strong> {{ user_info.full_name }}</p>
-          <p><strong>Age:</strong> {{ user_info.age }}</p>
+          <p><strong>Username:</strong> {{ CustomeUser.username }}</p>
+          <p><strong>Email:</strong> {{ CustomeUser.email }}</p>
+          <p><strong>Full Name:</strong> {{ CustomeUser.full_name }}</p>
+          <p><strong>Age:</strong> {{ CustomeUser.age }}</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
      <!-- Booking table -->
      <table id="view-booking-table" class="table">
@@ -24,16 +24,16 @@
               <th>Duration</th>
           </tr>
       </thead>
-      {% for booking in bookings %}
+      {% for session in Sessions %}
       <tbody>
           <tr class="booking-row">
               <!--if superuser or staff user show all booking fields -->
               {% if request.user.is_superuser or request.user.is_staff %}
-              <td>{{ booking.user }}</td>
+              <td>{{ booked_by.user }}</td>
               {% else %}
               <!-- if standard user is authenticated show their username but anonymize other usernames names -->
-              {% if booking.user == request.user %}
-              <td>{{ booking.user }}</td>
+              {% if booked_by.user == request.user %}
+              <td>{{ booked_by.user }}</td>
               {% else %}
               <td>*****</td>
               {% endif %}
@@ -42,7 +42,41 @@
               <td>{{ session.title }}</td>
               <td>{{ session.start_time }}</td>
               <td>{{ session.duration }}</td>
-              
+              <td>
+                <a href="{% url 'edit_booking' booking.id %}">Edit</a>
+              </td>
+            <!-- Cancel booking-->
+              <td>
+                <a data-bs-toggle="modal" data-bs-target="#modal-cancel-{{ forloop.counter }}">
+                    Cancel
+                </a>
+                <!-- modal cancellation confirmation -->
+                <div class="modal fade" id="modal-cancel-{{ forloop.counter }}" tabindex="-1"
+                    aria-labelledby="modal-cancel-label-{{ forloop.counter }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-cancel-label-{{ forloop.counter }}">
+                                    Cancel Booking for {{ session.title }}?
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to cancel the booking for
+                                <span>{{ session.title }}</span> on {{ session.date }} at
+                                {{ session.start_time }}?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-bs-dismiss="modal">No</button>
+                                <button type="button" class="btn"><a
+                                        href="{% url 'cancel_booking' session.id %}">Yes</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </td>
+        {% endfor %}
 
     <!-- <div class="col">
       <div class="card">

@@ -43,10 +43,10 @@ def register_user(request):
 
 
 @method_decorator(login_required, name='dispatch')
-class ProfileView(TemplateView):
-    template_name = 'home/profile.html'
+class BookingView(TemplateView):
+    template_name = 'home/bookings.html'
     model = CustomUser
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('bookings')
 
     # def get_object(self):
     #         # Ensure only the logged-in user can update their profile
@@ -64,7 +64,7 @@ class ProfileView(TemplateView):
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('bookings')
     """
         Custom login view to display login form with success message.
     """
@@ -89,16 +89,16 @@ def userlogout(request):
 
 # Booking and CRUD 
 
-def view_booking(request):
-    """
-    View bookings made by user on profile page
-    """
-    today_date = datetime.now()
-    bookings = Sessions.objects.filter(date__gte=today_date)
-    context = {
-        'sessions': bookings
-    }
-    return render(request, 'home/profile.html', context)
+# def view_booking(request):
+#     """
+#     View bookings made by user on profile page
+#     """
+#     today_date = datetime.now()
+#     bookings = Sessions.objects.filter(date__gte=today_date)
+#     context = {
+#         'sessions': bookings
+#     }
+#     return render(request, 'home/profile.html', context)
 
 
 # @method_decorator(login_required, name='dispatch')

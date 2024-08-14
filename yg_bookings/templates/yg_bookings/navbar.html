@@ -21,7 +21,7 @@
             {% if user.is_authenticated %}
 
             <li class="active nav-item mx-auto">
-                <a class="nav-link" href="{% url 'profile' %}" style="color: #67996e;">Profile</a>
+                <a class="nav-link" href="{% url 'bookings' %}" style="color: #67996e;">My Bookings</a>
             </li>
             <li class="nav-item mx-auto" style="margin-top: 10px;">
                 <form method="POST" action="{% url 'logout' %}" style="display: inline;">
