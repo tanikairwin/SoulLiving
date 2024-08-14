@@ -8,6 +8,13 @@
   
 body {
     background-color: #f1fcf1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+main {
+    flex: 1;
 }
 
 /* Nav bar styles */
@@ -126,7 +133,7 @@ label {
 /* Footer */
 .footer {
     background-color: #caca75;
-    margin: auto;
+    margin-top: auto;
 }
 .footer-img {
     padding: 10px;

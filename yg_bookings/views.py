@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView, LoginView
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View, TemplateView
-from .forms import SignUpForm, BookingForm, ProfileUpdateForm
+from .forms import SignUpForm, BookingForm
 from .models import Sessions, Booking, CustomUser
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -43,31 +43,24 @@ def register_user(request):
 
 
 @method_decorator(login_required, name='dispatch')
-class ProfileView(TemplateView):
-    template_name = 'home/profile.html'
+class BookingView(TemplateView):
+    template_name = 'home/bookings.html'
+    model = CustomUser
+    success_url = reverse_lazy('bookings')
 
-    def get_context_data(self, **kwargs):
-        # Get the default context data
-        context = super().get_context_data(**kwargs)
-        # Add user information to context
-        context['user_info'] = {
-            'username': self.request.user.username,
-            'email': self.request.user.email,
-            'full_name': getattr(self.request.user, 'full_name', 'N/A'),
-            'age': getattr(self.request.user, 'age', 'N/A'),
-        }
-        context['form'] = ProfileUpdateForm(instance=self.request.user)
-        return context
+    # def get_object(self):
+    #         # Ensure only the logged-in user can update their profile
+    #         return self.request.user
 
-    def post(self, request, *args, **kwargs):
-        form = ProfileUpdateForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your profile has been updated.')
-            return redirect('profile')
-        else:
-            messages.error(request, 'Please correct the error below.')
-            return self.get(request, *args, **kwargs)
+    # def form_valid(self, form):
+    #     # Save the updated user data
+    #     messages.success(self.request, 'Your profile has been updated.')
+    #     return super().form_valid(form)
+
+    # def form_invalid(self, form):
+    #     # Handle form errors
+    #     messages.error(self.request, 'Please correct the error below.')
+    #     return self.render_to_response(self.get_context_data(form=form))
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
@@ -76,13 +69,11 @@ class CustomLoginView(LoginView):
         Custom login view to display login form with success message.
     """
     def form_valid(self, form):
-        print("Form is valid. Redirecting to profile.")
         response = super().form_valid(form)
         messages.success(self.request, "You are now logged in.")
         return response
 
     def form_invalid(self, form):
-        print("Form is invalid. Redirecting to login.")
         messages.error(self.request, "There was an error logging in. Please try again.")
         return super().form_invalid(form)
 
@@ -95,6 +86,18 @@ def userlogout(request):
 
 
 # Booking and CRUD 
+
+# def view_booking(request):
+#     """
+#     View bookings made by user on profile page
+#     """
+#     today_date = datetime.now()
+#     bookings = Sessions.objects.filter(date__gte=today_date)
+#     context = {
+#         'sessions': bookings
+#     }
+#     return render(request, 'home/profile.html', context)
+
 
 # @method_decorator(login_required, name='dispatch')
 # class BookingConfirm(View):
@@ -117,8 +120,8 @@ def userlogout(request):
 #     """ 
 #     This view lists all bookings made by the logged-in user.
 #     """
-#     model = Booking
-#     template_name = 'yg_bookings/bookings.html'
+#     model = 
+#     template_name = 'home/profile.html'
 
 #     def get_queryset(self):
 #         return Booking.objects.filter(user=self.request.user)

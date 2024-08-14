@@ -4,6 +4,7 @@ import os
 import django
 from datetime import datetime, timedelta
 import pytz
+from django.utils import timezone
 
 # Setup Django environment
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'soul_living.settings')
@@ -37,6 +38,7 @@ def create_sessions():
                     Sessions.objects.create(
                         title=title,
                         start_time=start_datetime,
+                        date=single_date,
                         duration=timedelta(minutes=duration),
                         description=f"{title} session on {single_date.strftime('%A')} at {start_time}",
                     )
