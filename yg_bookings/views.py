@@ -54,6 +54,7 @@ class CustomLoginView(LoginView):
             password = request.POST['password']
             # Authenticate
             user = authenticate(request, username=username, password=password)
+            patch_no_cache(response)
             if user is not None:
                 login(request, user)
                 messages.success(request, "You are now logged in.")
@@ -66,6 +67,7 @@ class CustomLoginView(LoginView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        patch_no_cache(response)
         if self.request.user.is_authenticated:
             context['user_info'] = {
                 'username': self.request.user.username,
