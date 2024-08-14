@@ -36,10 +36,12 @@ class SignUpForm(UserCreationForm):
 		self.fields['password2'].help_text = 'Enter the same password as before, for verification.'	
 
 
-class CustomUserChangeForm(forms.ModelForm):
+class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'first_name', 'last_name', 'full_name', 'age']
+        fields = ['username', 'email', 'full_name', 'age']
+
+
 
 
 class BookingForm(forms.ModelForm):
@@ -49,13 +51,3 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = ['session']
-
-
-
-class CustomUserChangeForm(UserChangeForm):
-    """
-    This form allows for users to update there profile information
-    """
-    class Meta:
-        model = CustomUser
-        fields = ('username', 'full_name', 'email')
